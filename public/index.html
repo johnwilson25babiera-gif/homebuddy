@@ -1,364 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HomeBuddy</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Login | HomeBuddy</title>
+
+  <link rel="stylesheet" href="log.css">
 </head>
-<body>
 
-  <header>
-    <div class="logo">
-      <img src="1.jpg" alt="HomeBuddy Logo">
-      <h2>HomeBuddy</h2>
-    </div>
+<body class="login-page">
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#quick">Quick Workout</a>
-      <a href="#plans">Plans</a>
-      <a href="#workouts">Workouts</a>
-      <a href="#bmi">BMI</a>
-    </nav>
-<div class="logo">
-      <img src="boy.png" alt="HomeBuddy Logo">
-      <div class="logo">
-      <img src="girl.png" alt="HomeBuddy Logo">
+  <div class="login-box">
 
-<button class="logout-btn" onclick="logout()">
-  Logout
-</button>
-  </header>
-
-  <section class="hero" id="home">
-    <div class="hero-text">
-      <h1>Workout at Home with HomeBuddy</h1>
-      <p>
-        HomeBuddy helps students start their fitness journey with simple
-        home-based workouts and proper exercise guidance.
-      </p>
-      <button onclick="location.href='#workouts'">Get Started</button>
-    </div>
-
-    <div class="hero-video">
-      <video autoplay muted loop playsinline>
-        <source src="highlight.mp4" type="video/mp4">
-      </video>
-    </div>
-  </section>
-  
-  
-  <section id="motivation">
-    <div class="section-title">
-      <h1>Daily Motivation</h1>
-      <p>Stay motivated while working out at home.</p>
-    </div>
-
-    <div class="quote-box">
-      <h2 id="quote"></h2>
-    </div>
-  </section>
-
-  <div class="modal" id="videoModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeVideo()">&times;</span>
-      <h2 id="videoTitle"></h2>
-
-      <video id="workoutVideo" controls>
-        <source id="videoSource" src="" type="video/mp4">
-      </video>
-    </div>
-  </div><br><br><br><br><br><br><br><br>
-
-  
-
-  <section id="quick">
-    <div class="section-title">
-      <h1>Quick Workouts</h1>
-      <p>Perfect for busy students.</p>
-    </div>
-
-    <div class="cards">
-      <div class="card">
-        <span>10 Minutes</span>
-        <h3>Beginner Quick Workout</h3>
-        <p>Easy and simple exercises for beginners.</p>
-        <button onclick="showVideo('Beginner Quick Workout', 'highlight.mp4')">Watch Video</button>
-      </div>
-
-      <div class="card">
-        <span>10 Minutes</span>
-        <h3>Intermediate Quick Workout</h3>
-        <p>Short but effective workout routine.</p>
-        <button onclick="showVideo('Intermediate Quick Workout', 'highlight.mp4')">Watch Video</button>
-      </div>
-
-      <div class="card">
-        <span>10 Minutes</span>
-        <h3>Advanced Quick Workout</h3>
-        <p>Fast and intense home workout.</p>
-        <button onclick="showVideo('Advanced Quick Workout', 'highlight.mp4')">Watch Video</button>
-      </div>
-    </div>
-  </section>
-
-  <section id="plans">
-  <div class="section-title">
-    <h1>Workout Plans</h1>
-    <p>Choose your preferred workout level.</p>
-  </div>
-
-  <div class="cards">
-
-    <!-- BEGINNER -->
-    <div class="card">
-      <span>Beginner</span>
-      <h3>7 Days Beginner</h3>
-      <p>Perfect for students starting their fitness journey.</p>
-
-      <button onclick="togglePlan('beginnerPlan')">View Plan</button>
-
-      <div class="plan-days" id="beginnerPlan" style="display: none;">
-
-        <div class="day-item">
-          <h4>Day 1 - Push Ups</h4>
-          <button onclick="showVideo('Push Up', 'push up.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 2 - Squats</h4>
-          <button onclick="showVideo('Squat', 'squat.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 3 - Plank</h4>
-          <button onclick="showVideo('Plank', 'plank.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 4 - Jumping Jacks</h4>
-          <button onclick="showVideo('Jumping Jacks', 'jumping jacks.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 5 - Glute Bridge</h4>
-          <button onclick="showVideo('Glute Bridge', 'glute bridge.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 6 - Rest Day</h4>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 7 - Full Body Workout</h4>
-          <button onclick="showVideo('Workout Highlight', 'highlight.mp4')">Watch Video</button>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- INTERMEDIATE -->
-    <div class="card">
-      <span>Intermediate</span>
-      <h3>7 Days Intermediate</h3>
-      <p>Moderate intensity workout routine.</p>
-
-      <button onclick="togglePlan('intermediatePlan')">View Plan</button>
-
-   <div class="plan-days" id="intermediatePlan" style="display: none;">
-
-        <div class="day-item">
-          <h4>Day 1 - Push Ups + Plank</h4>
-          <button onclick="showVideo('Push Up', 'push up.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 2 - Squats + Calf Raises</h4>
-          <button onclick="showVideo('Squat', 'squat.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 3 - Jumping Jacks</h4>
-          <button onclick="showVideo('Jumping Jacks', 'jumping jacks.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 4 - Core Workout</h4>
-          <button onclick="showVideo('Plank', 'plank.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 5 - Chair Dips</h4>
-          <button onclick="showVideo('Chair Dips', 'chair dips.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 6 - Cardio Workout</h4>
-          <button onclick="showVideo('Workout Highlight', 'highlight.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 7 - Full Body Workout</h4>
-          <button onclick="showVideo('Workout Highlight', 'highlight.mp4')">Watch Video</button>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ADVANCED -->
-    <div class="card">
-      <span>Advanced</span>
-      <h3>7 Days Advanced</h3>
-      <p>Intense home workout for advanced users.</p>
-
-      <button onclick="togglePlan('advancedPlan')">View Plan</button>
-
-      <div class="plan-days" id="advancedPlan" style="display: none;">
-
-        <div class="day-item">
-          <h4>Day 1 - Diamond Push Ups</h4>
-          <button onclick="showVideo('Diamond Push Up', 'diamond push up.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 2 - Squats + Donkey Kicks</h4>
-          <button onclick="showVideo('Donkey Kicks', 'donkey kicks.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 3 - HIIT Cardio</h4>
-          <button onclick="showVideo('Workout Highlight', 'highlight.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 4 - Advanced Core</h4>
-          <button onclick="showVideo('Plank', 'plank.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 5 - Chair Dips + Plank</h4>
-          <button onclick="showVideo('Chair Dips', 'chair dips.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 6 - Full Body HIIT</h4>
-          <button onclick="showVideo('Workout Highlight', 'highlight.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 7 - Strength Workout</h4>
-          <button onclick="showVideo('Workout Highlight', 'highlight.mp4')">Watch Video</button>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
-  <section id="workouts">
-  <div class="section-title">
-    <h1>Watch Workout Videos</h1>
-    <p>Choose a body part and watch proper form tutorials.</p>
-  </div>
-
-  <div class="cards">
-
-    <div class="card">
-      <img src="upper.jpg" alt="Upper Body">
-      <span>Upper Body</span>
-      <h3>Upper Body Workout</h3>
-      <p>Exercises for chest, shoulders, and arms.</p>
-
-      <div class="exercise-list">
-        <button onclick="showVideo('Push Up', 'push up.mp4')">Push Up</button><br><br>
-        <button onclick="showVideo('Diamond Push Up', 'diamond push up.mp4')">Diamond Push Up</button><br><br>
-        <button onclick="showVideo('Chair Dips', 'chair dips.mp4')">Chair Dips</button><br><br>
-        <button onclick="showVideo('Arm Circles', 'arm circles.mp4')">Arm Circles</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="core.jpg" alt="Core">
-      <span>Core</span>
-      <h3>Core Workout</h3>
-      <p>Exercises for abs and body stability.</p>
-
-      <div class="exercise-list">
-        <button onclick="showVideo('Plank', 'plank.mp4')">Plank</button><br><br>
-        <button onclick="showVideo('Jumping Jacks', 'jumping jacks.mp4')">Jumping Jacks</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="lower.jpg" alt="Lower Body">
-      <span>Lower Body</span>
-      <h3>Lower Body Workout</h3>
-      <p>Exercises for legs and glutes.</p>
-
-      <div class="exercise-list">
-        <button onclick="showVideo('Squat', 'squat.mp4')">Squat</button><br><br>
-        <button onclick="showVideo('Calf Raises', 'calf raises.mp4')">Calf Raises</button><br><br>
-        <button onclick="showVideo('Donkey Kicks', 'donkey kicks.mp4')">Donkey Kicks</button><br><br>
-        <button onclick="showVideo('Glute Bridge', 'glute bridge.mp4')">Glute Bridge</button>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-  <section id="bmi">
-    <div class="section-title">
-      <h1>BMI Calculator</h1>
-      <p>Know your body mass index.</p>
-    </div>
-
-    <div class="bmi-box">
-      <input type="number" id="height" placeholder="Height in cm">
-      <input type="number" id="weight" placeholder="Weight in kg">
-      <button onclick="calculateBMI()">Calculate BMI</button>
-      <h2 id="bmiResult"></h2>
-    </div>
-  </section>
-
-  <section id="feedback">
-  <div class="section-title">
-    <h1>User Feedback</h1>
-    <p>Tell us about your workout experience.</p>
-  </div>
-
-  <div class="feedback-box">
-
-  <div class="feedback-form">
-
-
-
-    <select id="feedbackRating">
-      <option value="">Select Rating</option>
-      <option value="1">⭐ 1 Star</option>
-      <option value="2">⭐⭐ 2 Stars</option>
-      <option value="3">⭐⭐⭐ 3 Stars</option>
-      <option value="4">⭐⭐⭐⭐ 4 Stars</option>
-      <option value="5">⭐⭐⭐⭐⭐ 5 Stars</option>
-    </select>
-
-    <textarea id="feedbackMessage" placeholder="Share your workout experience..."></textarea>
-
-    <button onclick="submitFeedback()">Submit Feedback</button>
-
-  </div>
-
-  <div id="feedbackList"></div>
-
+  <div class="logo-container">
+  <img src="1.jpg" class="homebuddy-logo">
 </div>
-</section>
 
+    <h1>Welcome Back</h1>
 
-  <footer>
-    <p>© 2026 HomeBuddy | Home Workout Website</p>
-  </footer>
+    <p class="subtitle">
+      Login to continue your HomeBuddy workout journey
+    </p>
 
-  <script src="main.js"></script>
+    <form id="loginForm">
+
+      <label>Email</label>
+
+      <div class="input-box">
+        <i class="fa-solid fa-envelope"></i>
+
+        <input
+          type="email"
+          id="loginEmail"
+          placeholder="Enter your Gmail"
+          required
+        >
+      </div>
+
+      <label>Password</label>
+
+      <div class="input-box password-box">
+        <i class="fa-solid fa-lock"></i>
+
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="Enter your password"
+          required
+        >
+
+        <span onclick="togglePassword()">Show</span>
+      </div>
+
+      <div class="options">
+        <label class="remember">
+          <input type="checkbox">
+          Remember me
+        </label>
+      </div>
+
+      <p id="loginMessage"></p>
+
+      <button type="submit">LOGIN</button>
+
+    </form>
+
+    <div class="divider">
+      <span>or</span>
+    </div>
+
+    <p class="register-text">
+      No account yet?
+      <a href="register.html">Create Account</a>
+    </p>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="auth.js"></script>
+
+  <script>
+    function togglePassword() {
+      const password =
+      document.getElementById("loginPassword");
+
+      password.type =
+      password.type === "password"
+      ? "text"
+      : "password";
+    }
+  </script>
+
 </body>
 </html>

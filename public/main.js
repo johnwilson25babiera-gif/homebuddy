@@ -182,7 +182,7 @@ function randomQuote(){
 setInterval(randomQuote, 4000);
 
 function logout(){
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 }
 function submitFeedback(){
   const username = localStorage.getItem("loggedInUser") || "User";

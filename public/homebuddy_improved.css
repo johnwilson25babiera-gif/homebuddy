@@ -1,0 +1,126 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+html{ scroll-behavior:smooth; }
+body{ background:#1E1E1E; color:white; }
+
+header{
+  width:100%;
+  padding:16px 8%;
+  background:rgba(36,36,36,0.95);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 4px 15px rgba(0,0,0,0.4);
+}
+
+.logo{ display:flex; align-items:center; gap:12px; }
+.logo img{ width:58px; height:58px; border-radius:50%; object-fit:cover; border:2px solid #F47C20; }
+.logo h2{ color:#F47C20; }
+
+nav a{ color:white; text-decoration:none; margin-left:20px; font-weight:bold; }
+nav a:hover{ color:#F47C20; }
+
+.hero{
+  min-height:90vh;
+  padding:70px 8%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:50px;
+  background:radial-gradient(circle at top left, rgba(244,124,32,0.16), transparent 35%);
+}
+
+.hero-text{ flex:1; }
+.tagline{ color:#F47C20; font-weight:bold; letter-spacing:1px; margin-bottom:10px; }
+.hero-text h1{ font-size:55px; color:#F47C20; margin-bottom:20px; }
+.hero-text p{ font-size:18px; color:#ddd; line-height:1.7; margin-bottom:25px; }
+.hero-buttons{ display:flex; gap:15px; flex-wrap:wrap; }
+
+.hero-video{ flex:1; }
+.hero-video video{ width:100%; max-height:430px; object-fit:cover; border-radius:25px; box-shadow:0 10px 30px rgba(0,0,0,0.5); }
+
+button{
+  padding:13px 26px;
+  border:none;
+  border-radius:30px;
+  background:#F47C20;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+button:hover{ background:white; color:#F47C20; transform:scale(1.05); }
+.outline{ background:transparent; border:2px solid #F47C20; }
+
+section{ padding:70px 8%; }
+.section-title{ text-align:center; margin-bottom:40px; }
+.section-title h1{ color:#F47C20; font-size:36px; margin-bottom:10px; }
+.section-title p{ color:#ccc; }
+
+.cards, .feature-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+  gap:25px;
+}
+
+.card, .feature-box, .plan-box, .bmi-box, .checklist{
+  background:#2b2b2b;
+  border-radius:22px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.4);
+}
+
+.card{ padding:25px; text-align:center; transition:0.3s; overflow:hidden; }
+.card:hover{ transform:translateY(-10px); box-shadow:0 12px 30px rgba(244,124,32,0.25); }
+.card img{ width:100%; height:180px; object-fit:cover; border-radius:15px; margin-bottom:18px; }
+.card span{ display:inline-block; background:#3a3a3a; color:#F47C20; padding:6px 14px; border-radius:20px; margin-bottom:12px; font-size:14px; }
+.card h3{ color:#F47C20; margin-bottom:12px; }
+.card p{ color:#ddd; line-height:1.5; margin-bottom:15px; }
+
+.feature-box{ padding:25px; text-align:center; color:#eee; font-weight:bold; border:1px solid rgba(244,124,32,0.25); }
+
+.filter-buttons{ display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:30px; }
+
+.plan-box{ margin-top:30px; padding:28px; border-left:5px solid #F47C20; }
+.plan-box h3{ color:#F47C20; margin-bottom:10px; }
+.plan-box ul{ margin-left:22px; color:#ddd; line-height:1.8; }
+
+.bmi-box{ max-width:520px; margin:auto; padding:28px; text-align:center; }
+.bmi-box input{
+  width:100%;
+  padding:14px;
+  margin-bottom:14px;
+  border:none;
+  border-radius:12px;
+  outline:none;
+}
+.bmi-box h3{ color:#F47C20; margin-top:18px; }
+
+.checklist{ max-width:650px; margin:auto; padding:28px; display:grid; gap:15px; }
+.checklist label{ background:#363636; padding:14px; border-radius:12px; }
+.checklist input{ margin-right:10px; }
+
+.modal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:1000; padding:20px; }
+.modal-content{ background:#2b2b2b; padding:25px; border-radius:20px; max-width:750px; width:100%; border:3px solid #F47C20; text-align:center; position:relative; }
+.modal-content h2{ color:#F47C20; margin-bottom:20px; }
+.modal-content video{ width:100%; border-radius:15px; }
+.close{ position:absolute; top:10px; right:18px; font-size:32px; color:#F47C20; cursor:pointer; }
+
+footer{ background:#242424; text-align:center; padding:25px; color:#aaa; }
+
+@media(max-width:768px){
+  header{ flex-direction:column; gap:15px; }
+  nav{ text-align:center; }
+  nav a{ display:inline-block; margin:6px 8px; font-size:14px; }
+  .hero{ flex-direction:column; text-align:center; }
+  .hero-text h1{ font-size:38px; }
+  .hero-buttons{ justify-content:center; }
+  .hero-video video{ max-height:280px; }
+}

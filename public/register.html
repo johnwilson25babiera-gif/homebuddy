@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register | HomeBuddy</title>
+  <link rel="stylesheet" href="log.css">
+
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body class="login-page">
+
+  <div class="login-box">
+
+    <div class="logo-container">
+      <img src="1(6).jpg" class="homebuddy-logo">
+    </div>
+
+    <h1>Create Account</h1>
+
+    <p class="subtitle">
+      Join HomeBuddy and start your workout journey
+    </p>
+
+    <form id="registerForm">
+
+      <label>Email</label>
+      <div class="input-box">
+        <i class="fa-solid fa-envelope"></i>
+        <input type="email" id="regEmail" placeholder="Enter your Gmail" required>
+      </div>
+
+      <label>Password</label>
+      <div class="input-box password-box">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" id="regPassword" placeholder="Create password" required>
+        <span onclick="toggleRegPassword()">Show</span>
+      </div>
+
+      <button type="submit">REGISTER</button>
+
+    </form>
+
+    <p class="register-text">
+      Already have an account?
+      <a href="login.html">Login</a>
+    </p>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="auth.js"></script>
+
+  <script>
+    function toggleRegPassword() {
+      const password = document.getElementById("regPassword");
+
+      password.type =
+      password.type === "password" ? "text" : "password";
+    }
+  </script>
+
+</body>
+</html>

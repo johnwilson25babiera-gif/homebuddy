@@ -1,0 +1,205 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body.login-page{
+  min-height:100vh;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:20px;
+
+  font-family:Arial, sans-serif;
+
+  background:#1e1e1e;
+}
+
+.login-box{
+  width:100%;
+  max-width:400px;
+
+  padding:40px 35px;
+
+  border-radius:25px;
+
+  background:#2a2a2a;
+
+  border:2px solid #ff7b21;
+
+  box-shadow:
+  0 0 25px rgba(255,123,33,0.25);
+
+  text-align:center;
+
+  color:white;
+}
+
+.logo-container{
+  margin-bottom:15px;
+}
+
+.homebuddy-logo{
+  width:140px;
+  max-width:100%;
+}
+
+.login-box h1{
+  font-size:40px;
+  margin-bottom:8px;
+  color:#ffffff;
+}
+
+.subtitle{
+  color:#cccccc;
+  margin-bottom:30px;
+  font-size:15px;
+}
+
+.login-box label{
+  display:block;
+  text-align:left;
+  margin-bottom:8px;
+  margin-top:18px;
+
+  font-weight:bold;
+
+  color:#ff9d57;
+}
+
+.input-box{
+  position:relative;
+}
+
+.input-box i{
+  position:absolute;
+  left:15px;
+  top:50%;
+  transform:translateY(-50%);
+
+  color:#ff7b21;
+}
+
+.input-box input{
+  width:100%;
+
+  padding:14px 45px;
+
+  border:none;
+
+  border-radius:12px;
+
+  background:#3a3a3a;
+
+  color:white;
+
+  outline:none;
+
+  font-size:15px;
+}
+
+.input-box input::placeholder{
+  color:#bdbdbd;
+}
+
+.input-box input:focus{
+  border:2px solid #ff7b21;
+}
+
+.password-box span{
+  position:absolute;
+
+  right:15px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  color:#ff9d57;
+
+  cursor:pointer;
+
+  font-size:14px;
+}
+
+.options{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  margin-top:15px;
+
+  font-size:13px;
+}
+
+.options a{
+  color:#ff9d57;
+  text-decoration:none;
+}
+
+.remember{
+  display:flex !important;
+  align-items:center;
+  gap:5px;
+
+  margin:0 !important;
+
+  color:#ddd;
+}
+
+button{
+  width:100%;
+
+  padding:14px;
+
+  margin-top:25px;
+
+  border:none;
+
+  border-radius:14px;
+
+  background:#ff7b21;
+
+  color:white;
+
+  font-size:17px;
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+button:hover{
+  background:#ff943d;
+
+  transform:scale(1.02);
+}
+
+.divider{
+  margin:25px 0;
+  color:#aaa;
+}
+
+.register-text{
+  margin-top:15px;
+
+  color:#ddd;
+
+  font-size:15px;
+}
+
+.register-text a{
+  color:#ff9d57;
+
+  text-decoration:none;
+
+  font-weight:bold;
+}
+
+#loginMessage{
+  margin-top:10px;
+  color:#ffb3b3;
+}

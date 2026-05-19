@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login | HomeBuddy</title>
+
+  <link rel="stylesheet" href="log.css">
+</head>
+
+<body class="login-page">
+
+  <div class="login-box">
+
+  <div class="logo-container">
+  <img src="1.jpg" class="homebuddy-logo">
+</div>
+
+    <h1>Welcome Back</h1>
+
+    <p class="subtitle">
+      Login to continue your HomeBuddy workout journey
+    </p>
+
+    <form id="loginForm">
+
+      <label>Email</label>
+
+      <div class="input-box">
+        <i class="fa-solid fa-envelope"></i>
+
+        <input
+          type="email"
+          id="loginEmail"
+          placeholder="Enter your Gmail"
+          required
+        >
+      </div>
+
+      <label>Password</label>
+
+      <div class="input-box password-box">
+        <i class="fa-solid fa-lock"></i>
+
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="Enter your password"
+          required
+        >
+
+        <span onclick="togglePassword()">Show</span>
+      </div>
+
+      <div class="options">
+        <label class="remember">
+          <input type="checkbox">
+          Remember me
+        </label>
+      </div>
+
+      <p id="loginMessage"></p>
+
+      <button type="submit">LOGIN</button>
+
+    </form>
+
+    <div class="divider">
+      <span>or</span>
+    </div>
+
+    <p class="register-text">
+      No account yet?
+      <a href="register.html">Create Account</a>
+    </p>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="auth.js"></script>
+
+  <script>
+    function togglePassword() {
+      const password =
+      document.getElementById("loginPassword");
+
+      password.type =
+      password.type === "password"
+      ? "text"
+      : "password";
+    }
+  </script>
+
+</body>
+</html>

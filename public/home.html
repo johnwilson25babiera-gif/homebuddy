@@ -1,365 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HomeBuddy</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HomeBuddy | Home Workout Website</title>
+  <style>
+    :root{
+      --bg:#151515;
+      --panel:#222;
+      --panel2:#2b2b2b;
+      --text:#ffffff;
+      --muted:#cfcfcf;
+      --orange:#ff7a1a;
+      --orange2:#ff9a4d;
+      --line:rgba(255,255,255,.10);
+      --shadow:0 18px 45px rgba(0,0,0,.40);
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, Helvetica, sans-serif;}
+    html{scroll-behavior:smooth;}
+    body{background:radial-gradient(circle at top left,#2b2119 0,#151515 35%,#111 100%);color:var(--text);}
+
+    header{
+      width:100%;
+      padding:14px 7%;
+      background:rgba(24,24,24,.92);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:100;
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--line);
+      box-shadow:0 8px 25px rgba(0,0,0,.35);
+    }
+
+    .brand{display:flex;align-items:center;gap:14px;}
+    .logo-circle,.gender-logo{
+      border:3px solid var(--orange);
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      background:#111;
+      box-shadow:0 0 0 5px rgba(255,122,26,.08);
+    }
+    .logo-circle{width:72px;height:72px;color:var(--orange);font-weight:900;font-size:12px;text-align:center;line-height:1.1;}
+    .brand h1{color:var(--orange);font-size:30px;letter-spacing:.5px;}
+
+    nav{display:flex;gap:24px;align-items:center;}
+    nav a{color:white;text-decoration:none;font-weight:800;font-size:16px;transition:.25s;}
+    nav a:hover{color:var(--orange);}
+
+    .right-nav{display:flex;align-items:center;gap:12px;}
+    .gender-logo{width:62px;height:62px;cursor:pointer;font-size:31px;transition:.25s;}
+    .gender-logo:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 0 25px rgba(255,122,26,.55);}
+
+    button,a{ -webkit-tap-highlight-color:transparent; }
+    .logout,.btn,.small-btn{
+      border:none;
+      background:linear-gradient(135deg,var(--orange),var(--orange2));
+      color:white;
+      padding:14px 28px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:15px;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-block;
+      transition:.25s;
+      box-shadow:0 10px 24px rgba(255,122,26,.20);
+    }
+    .btn:hover,.logout:hover,.small-btn:hover{transform:translateY(-2px);filter:brightness(1.07);}
+    .small-btn{padding:12px 24px;margin:8px;}
+    .close-btn{background:#444;box-shadow:none;}
+
+    section{padding:78px 7%;}
+    .page{display:none;min-height:100vh;}
+    .page.active{display:block;}
+
+    .hero{
+      min-height:86vh;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:60px;
+      align-items:center;
+    }
+    .tagline{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:rgba(255,122,26,.13);
+      border:1px solid rgba(255,122,26,.30);
+      color:#ffd3b4;
+      padding:10px 16px;
+      border-radius:999px;
+      font-weight:800;
+      margin-bottom:20px;
+    }
+    .hero h2{font-size:clamp(42px,6vw,72px);color:var(--orange);line-height:1.06;margin-bottom:22px;}
+    .hero p{font-size:20px;line-height:1.65;margin-bottom:30px;color:#f0f0f0;max-width:680px;}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+    .outline-btn{background:transparent;border:2px solid var(--orange);color:var(--orange);box-shadow:none;}
+    .hero-video{
+      min-height:410px;
+      border-radius:32px;
+      background:linear-gradient(145deg,#2e2e2e,#1b1b1b);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      border:1px solid var(--line);
+      position:relative;
+    }
+    .hero-video:before{
+      content:"";
+      position:absolute;
+      inset:-80px;
+      background:radial-gradient(circle,rgba(255,122,26,.20),transparent 60%);
+    }
+    .video-placeholder{position:relative;width:88%;min-height:300px;border:3px dashed #666;border-radius:24px;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;color:#ddd;font-size:24px;text-align:center;padding:25px;}
+    .play-icon{width:74px;height:74px;border-radius:50%;background:var(--orange);display:grid;place-items:center;font-size:34px;box-shadow:0 0 30px rgba(255,122,26,.50);}
+
+    .title{text-align:center;margin-bottom:42px;}
+    .title h2{font-size:clamp(34px,4vw,52px);color:var(--orange);margin-bottom:12px;}
+    .title p{font-size:20px;color:var(--muted);line-height:1.5;}
+
+    .motivation-card{max-width:1000px;margin:auto;background:linear-gradient(145deg,#2c2c2c,#202020);padding:50px;border-radius:28px;text-align:center;box-shadow:var(--shadow);border:1px solid var(--line);}
+    .motivation-card h3{font-size:clamp(26px,3vw,38px);color:var(--orange);margin-bottom:14px;}
+    .motivation-card p{color:#ddd;font-size:19px;line-height:1.6;}
+
+    .cards,.routine-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+    .card{background:linear-gradient(145deg,#2b2b2b,#202020);border:1px solid var(--line);border-radius:28px;padding:34px 26px;text-align:center;box-shadow:var(--shadow);min-height:285px;transition:.25s;}
+    .card:hover{transform:translateY(-6px);border-color:rgba(255,122,26,.35);}
+    .pill{display:inline-block;background:rgba(255,122,26,.12);border:1px solid rgba(255,122,26,.25);color:var(--orange);padding:10px 20px;border-radius:999px;font-size:17px;font-weight:900;margin-bottom:18px;}
+    .card h3{color:var(--orange);font-size:25px;margin-bottom:16px;}
+    .card p{font-size:18px;line-height:1.55;margin-bottom:22px;color:#e8e8e8;}
+
+    .workout-img,.video-box{height:165px;background:#171717;border-radius:18px;border:2px dashed #555;margin-bottom:22px;display:flex;align-items:center;justify-content:center;color:#aaa;overflow:hidden;padding:15px;}
+    .workout-img video,.video-box video,.hero-video video{width:100%;height:100%;object-fit:cover;border-radius:14px;}
+    .exercise-list button{display:block;width:90%;margin:10px auto;background:#333;border:1px solid rgba(255,255,255,.10);color:white;padding:13px 18px;border-radius:20px;font-weight:800;cursor:pointer;transition:.22s;}
+    .exercise-list button:hover{background:var(--orange);transform:translateX(3px);}
+
+    .bmi-box{max-width:660px;margin:auto;background:linear-gradient(145deg,#2b2b2b,#202020);padding:36px;border-radius:26px;text-align:center;box-shadow:var(--shadow);border:1px solid var(--line);}
+    .input-group{text-align:left;margin-bottom:14px;}
+    .input-group label{display:block;margin:0 0 8px 4px;color:#f1f1f1;font-weight:800;}
+    .bmi-box input{width:100%;padding:17px;border:none;border-radius:14px;font-size:16px;outline:none;background:#f4f4f4;}
+    #bmiResult{margin-top:20px;font-size:19px;line-height:1.65;background:#181818;border-radius:18px;padding:18px;display:none;border:1px solid var(--line);}
+    #bmiResult.show{display:block;}
+    .suggestion-btn{margin-top:14px;}
+
+    .food-list{text-align:left;font-size:17px;line-height:1.75;margin-top:15px;color:#eee;}
+    .food-list ul{margin:8px 0 18px 18px;}
+    .food-list li{margin-bottom:5px;}
+
+    .modal{display:none;position:fixed;z-index:999;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.86);align-items:center;justify-content:center;padding:22px;}
+    .modal.active{display:flex;}
+    .modal-content{background:#252525;width:min(980px,96%);max-height:90vh;overflow:auto;border-radius:28px;padding:28px;text-align:center;box-shadow:0 0 45px rgba(0,0,0,.9);border:1px solid var(--line);}
+    .modal-content h2{color:var(--orange);margin-bottom:20px;font-size:32px;}
+    .modal-video{height:430px;background:#111;border:2px dashed #555;border-radius:20px;margin-bottom:20px;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#aaa;}
+    .modal-video video{width:100%;height:100%;object-fit:cover;}
+    .plan-list{text-align:left;display:grid;gap:18px;margin-top:20px;}
+    .day-card{background:#181818;border:1px solid var(--line);border-radius:20px;padding:20px;}
+    .day-card h3{color:var(--orange);margin-bottom:10px;}
+    .day-card p{font-size:18px;margin-bottom:12px;color:#eee;}
+    .day-card video{width:100%;max-height:260px;background:#111;border-radius:14px;}
+
+    footer{text-align:center;background:#0f0f0f;padding:30px;color:#ccc;border-top:1px solid var(--line);}
+
+    @media(max-width:1050px){
+      header{flex-direction:column;gap:16px;padding:14px 5%;}
+      nav,.right-nav{flex-wrap:wrap;justify-content:center;gap:14px;}
+      .hero,.cards,.routine-grid{grid-template-columns:1fr;}
+      .hero{min-height:auto;padding-top:55px;}
+      .hero-video{min-height:300px;}
+      .modal-video{height:270px;}
+    }
+
+    @media(max-width:560px){
+      section{padding:60px 5%;}
+      .brand h1{font-size:25px;}
+      .logo-circle{width:58px;height:58px;font-size:10px;}
+      .gender-logo{width:54px;height:54px;font-size:27px;}
+      nav a{font-size:14px;}
+      .card,.bmi-box,.motivation-card{padding:26px 18px;}
+      .hero p,.title p{font-size:17px;}
+    }
+  </style>
 </head>
 <body>
+  <div id="mainPage" class="page active">
+    <header>
+      <div class="brand">
+        <div class="logo-circle">HOME<br>BUDDY</div>
+        <h1>HomeBuddy</h1>
+      </div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#bmi">BMI</a>
+        <a href="#motivation">Motivation</a>
+      </nav>
+      <div class="right-nav">
+        <div class="gender-logo" onclick="openGenderPage('men')" title="Men Workout">🏋️‍♂️</div>
+        <div class="gender-logo" onclick="openGenderPage('women')" title="Women Workout">🏋️‍♀️</div>
+        <button class="logout" onclick="alert('Logout button clicked')">Logout</button>
+      </div>
+    </header>
 
-  <header>
-    <div class="logo">
-      <img src="1.jpg" alt="HomeBuddy Logo">
-      <h2>HomeBuddy</h2>
-    </div>
+    <section class="hero" id="home">
+      <div>
+        <div class="tagline">🏠 Science-based home fitness</div>
+        <h2>Workout at Home with HomeBuddy</h2>
+        <p>Start your fitness journey with simple home workouts, budget-friendly meal ideas, BMI guidance, and easy workout videos for students.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#bmi">Check BMI</a>
+          <button class="small-btn outline-btn" onclick="openGenderPage('men')">Men Workouts</button>
+          <button class="small-btn outline-btn" onclick="openGenderPage('women')">Women Workouts</button>
+        </div>
+      </div>
+      <div class="hero-video">
+        <div class="video-placeholder">
+          <div class="play-icon">▶</div>
+          Main Workout Video Placeholder<br><small>Replace with your own video file if needed.</small>
+        </div>
+      </div>
+    </section>
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#quick">Quick Workout</a>
-      <a href="#plans">Plans</a>
-      <a href="#workouts">Workouts</a>
-      <a href="#bmi">BMI</a>
-    </nav>
-<div class="logo">
-      <img src="boy.png" alt="HomeBuddy Logo">
-      <div class="logo">
-      <img src="girl.png" alt="HomeBuddy Logo">
+    <section id="motivation">
+      <div class="title"><h2>Daily Motivation</h2><p>Small progress is still progress.</p></div>
+      <div class="motivation-card">
+        <h3>Discipline is stronger than motivation.</h3>
+        <p>Even a 10-minute workout can help build a healthy routine when you do it consistently.</p>
+      </div>
+    </section>
 
-      
-<button class="logout-btn" onclick="logout()">
-  Logout
-</button>
-  </header>
+    <section id="bmi">
+      <div class="title"><h2>BMI Calculator</h2><p>Check your body mass index and get a suggested workout goal.</p></div>
+      <div class="bmi-box">
+        <div class="input-group">
+          <label for="height">Height in centimeters</label>
+          <input type="number" id="height" placeholder="Example: 165" min="1">
+        </div>
+        <div class="input-group">
+          <label for="weight">Weight in kilograms</label>
+          <input type="number" id="weight" placeholder="Example: 55" min="1">
+        </div>
+        <button class="small-btn" onclick="calculateBMI()">Calculate BMI</button>
+        <div id="bmiResult"></div>
+      </div>
+    </section>
+    <footer>© 2026 HomeBuddy. All Rights Reserved.</footer>
+  </div>
 
-  <section class="hero" id="home">
-    <div class="hero-text">
-      <h1>Workout at Home with HomeBuddy</h1>
-      <p>
-        HomeBuddy helps students start their fitness journey with simple
-        home-based workouts and proper exercise guidance.
-      </p>
-      <button onclick="location.href='#workouts'">Get Started</button>
-    </div>
+  <div id="genderPage" class="page">
+    <header>
+      <div class="brand">
+        <div class="logo-circle">HOME<br>BUDDY</div>
+        <h1>HomeBuddy</h1>
+      </div>
+      <nav>
+        <a href="#genderQuick">Quick Workouts</a>
+        <a href="#genderPlans">Plans</a>
+        <a href="#genderWorkouts">Videos</a>
+        <a href="#genderRoutine">Food & Goal</a>
+      </nav>
+      <button class="small-btn" onclick="goHome()">← Back Home</button>
+    </header>
 
-    <div class="hero-video">
-      <video autoplay muted loop playsinline>
-        <source src="highlight.mp4" type="video/mp4">
-      </video>
-    </div>
-  </section>
-  
-  
-  <section id="motivation">
-    <div class="section-title">
-      <h1>Daily Motivation</h1>
-      <p>Stay motivated while working out at home.</p>
-    </div>
+    <section id="genderRoutine">
+      <div class="title">
+        <h2 id="genderTitle">Workout Routine</h2>
+        <p>Choose your goal: lose weight, maintain weight, or gain weight.</p>
+      </div>
+      <div class="routine-grid" id="routineGrid"></div>
+    </section>
 
-    <div class="quote-box">
-      <h2 id="quote"></h2>
-    </div>
-  </section>
+    <section id="genderQuick">
+      <div class="title"><h2>Quick Workouts</h2><p>Short 10-minute workouts for busy students.</p></div>
+      <div class="cards" id="genderQuickGrid"></div>
+    </section>
 
-  <div class="modal" id="videoModal">
+    <section id="genderPlans">
+      <div class="title"><h2>Workout Plans</h2><p>View a 7-day routine with videos for each day.</p></div>
+      <div class="cards" id="genderPlanGrid"></div>
+    </section>
+
+    <section id="genderWorkouts">
+      <div class="title"><h2>Watch Workout Videos</h2><p>Click an exercise button to play the video.</p></div>
+      <div class="cards" id="genderWorkoutGrid"></div>
+    </section>
+  </div>
+
+  <div id="videoModal" class="modal" onclick="closeOnOutside(event,'videoModal')">
     <div class="modal-content">
-      <span class="close" onclick="closeVideo()">&times;</span>
-      <h2 id="videoTitle"></h2>
-
-      <video id="workoutVideo" controls>
-        <source id="videoSource" src="" type="video/mp4">
-      </video>
+      <h2 id="videoTitle">Workout Video</h2>
+      <div class="modal-video" id="videoContainer"></div>
+      <button class="small-btn close-btn" onclick="closeModal()">Close</button>
     </div>
-  </div><br><br><br><br><br><br><br><br>
-
-  
-
-  <section id="quick">
-    <div class="section-title">
-      <h1>Quick Workouts</h1>
-      <p>Perfect for busy students.</p>
-    </div>
-
-    <div class="cards">
-      <div class="card">
-        <span>10 Minutes</span>
-        <h3>Beginner Quick Workout</h3>
-        <p>Easy and simple exercises for beginners.</p>
-        <button onclick="showVideo('Beginner Quick Workout', 'highlight.mp4')">Watch Video</button>
-      </div>
-
-      <div class="card">
-        <span>10 Minutes</span>
-        <h3>Intermediate Quick Workout</h3>
-        <p>Short but effective workout routine.</p>
-        <button onclick="showVideo('Intermediate Quick Workout', 'highlight.mp4')">Watch Video</button>
-      </div>
-
-      <div class="card">
-        <span>10 Minutes</span>
-        <h3>Advanced Quick Workout</h3>
-        <p>Fast and intense home workout.</p>
-        <button onclick="showVideo('Advanced Quick Workout', 'highlight.mp4')">Watch Video</button>
-      </div>
-    </div>
-  </section>
-
-  <section id="plans">
-  <div class="section-title">
-    <h1>Workout Plans</h1>
-    <p>Choose your preferred workout level.</p>
   </div>
 
-  <div class="cards">
-
-    <!-- BEGINNER -->
-    <div class="card">
-      <span>Beginner</span>
-      <h3>7 Days Beginner</h3>
-      <p>Perfect for students starting their fitness journey.</p>
-
-      <button onclick="togglePlan('beginnerPlan')">View Plan</button>
-
-      <div class="plan-days" id="beginnerPlan" style="display: none;">
-
-        <div class="day-item">
-          <h4>Day 1 - Push Ups</h4>
-          <button onclick="showVideo('Push Up', 'push up.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 2 - Squats</h4>
-          <button onclick="showVideo('Squat', 'squat.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 3 - Plank</h4>
-          <button onclick="showVideo('Plank', 'plank.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 4 - Jumping Jacks</h4>
-          <button onclick="showVideo('Jumping Jacks', 'jumping jacks.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 5 - Glute Bridge</h4>
-          <button onclick="showVideo('Glute Bridge', 'glute bridge.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 6 - Rest Day</h4>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 7 - Full Body Workout</h4>
-          <button onclick="showVideo('Workout Highlight', 'highlight.mp4')">Watch Video</button>
-        </div>
-
-      </div>
+  <div id="planModal" class="modal" onclick="closeOnOutside(event,'planModal')">
+    <div class="modal-content">
+      <h2 id="planTitle">7 Days Workout Plan</h2>
+      <div class="plan-list" id="planList"></div>
+      <button class="small-btn close-btn" onclick="closeModal()">Close</button>
     </div>
-
-    <!-- INTERMEDIATE -->
-    <div class="card">
-      <span>Intermediate</span>
-      <h3>7 Days Intermediate</h3>
-      <p>Moderate intensity workout routine.</p>
-
-      <button onclick="togglePlan('intermediatePlan')">View Plan</button>
-
-   <div class="plan-days" id="intermediatePlan" style="display: none;">
-
-        <div class="day-item">
-          <h4>Day 1 - Push Ups + Plank</h4>
-          <button onclick="showVideo('Push Up', 'push up.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 2 - Squats + Calf Raises</h4>
-          <button onclick="showVideo('Squat', 'squat.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 3 - Jumping Jacks</h4>
-          <button onclick="showVideo('Jumping Jacks', 'jumping jacks.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 4 - Core Workout</h4>
-          <button onclick="showVideo('Plank', 'plank.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 5 - Chair Dips</h4>
-          <button onclick="showVideo('Chair Dips', 'chair dips.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 6 - Cardio Workout</h4>
-          <button onclick="showVideo('Workout Highlight', 'highlight.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 7 - Full Body Workout</h4>
-          <button onclick="showVideo('Workout Highlight', 'highlight.mp4')">Watch Video</button>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ADVANCED -->
-    <div class="card">
-      <span>Advanced</span>
-      <h3>7 Days Advanced</h3>
-      <p>Intense home workout for advanced users.</p>
-
-      <button onclick="togglePlan('advancedPlan')">View Plan</button>
-
-      <div class="plan-days" id="advancedPlan" style="display: none;">
-
-        <div class="day-item">
-          <h4>Day 1 - Diamond Push Ups</h4>
-          <button onclick="showVideo('Diamond Push Up', 'diamond push up.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 2 - Squats + Donkey Kicks</h4>
-          <button onclick="showVideo('Donkey Kicks', 'donkey kicks.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 3 - HIIT Cardio</h4>
-          <button onclick="showVideo('Workout Highlight', 'highlight.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 4 - Advanced Core</h4>
-          <button onclick="showVideo('Plank', 'plank.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 5 - Chair Dips + Plank</h4>
-          <button onclick="showVideo('Chair Dips', 'chair dips.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 6 - Full Body HIIT</h4>
-          <button onclick="showVideo('Workout Highlight', 'highlight.mp4')">Watch Video</button>
-        </div>
-
-        <div class="day-item">
-          <h4>Day 7 - Strength Workout</h4>
-          <button onclick="showVideo('Workout Highlight', 'highlight.mp4')">Watch Video</button>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
-  <section id="workouts">
-  <div class="section-title">
-    <h1>Watch Workout Videos</h1>
-    <p>Choose a body part and watch proper form tutorials.</p>
   </div>
 
-  <div class="cards">
+  <script>
+    let lastGender = 'men';
 
-    <div class="card">
-      <img src="upper.jpg" alt="Upper Body">
-      <span>Upper Body</span>
-      <h3>Upper Body Workout</h3>
-      <p>Exercises for chest, shoulders, and arms.</p>
+    const routines = {
+      men: {
+        title: 'Men Workout Routine',
+        lose: ['Jumping Jacks - 3 sets', 'Push Up - 3 sets', 'Squat - 3 sets', 'Plank - 30 seconds', 'Mountain Climbers - 3 sets'],
+        maintain: ['Push Up - 3 sets', 'Chair Dips - 3 sets', 'Squat - 3 sets', 'Plank - 45 seconds', 'Arm Circles - 3 sets'],
+        gain: ['Slow Push Up - 4 sets', 'Diamond Push Up - 3 sets', 'Chair Dips - 4 sets', 'Squat - 4 sets', 'Glute Bridge - 3 sets']
+      },
+      women: {
+        title: 'Women Workout Routine',
+        lose: ['Jumping Jacks - 3 sets', 'Squat - 3 sets', 'Donkey Kicks - 3 sets', 'Plank - 30 seconds', 'High Knees - 3 sets'],
+        maintain: ['Squat - 3 sets', 'Glute Bridge - 3 sets', 'Arm Circles - 3 sets', 'Plank - 40 seconds', 'Calf Raises - 3 sets'],
+        gain: ['Glute Bridge - 4 sets', 'Squat - 4 sets', 'Donkey Kicks - 4 sets', 'Calf Raises - 3 sets', 'Wall Sit - 3 sets']
+      }
+    };
 
-      <div class="exercise-list">
-        <button onclick="showVideo('Push Up', 'push up.mp4')">Push Up</button><br><br>
-        <button onclick="showVideo('Diamond Push Up', 'diamond push up.mp4')">Diamond Push Up</button><br><br>
-        <button onclick="showVideo('Chair Dips', 'chair dips.mp4')">Chair Dips</button><br><br>
-        <button onclick="showVideo('Arm Circles', 'arm circles.mp4')">Arm Circles</button>
-      </div>
-    </div>
+    const foods = {
+      lose: ['Boiled egg with banana', 'Tuna with rice and vegetables', 'Oatmeal with fruit', 'Chicken breast with vegetables', 'Mongo soup with rice'],
+      maintain: ['Egg with rice', 'Chicken adobo with rice', 'Vegetable soup', 'Peanut butter sandwich', 'Fish with rice and vegetables'],
+      gain: ['Rice with egg and banana', 'Peanut butter sandwich', 'Tuna with rice', 'Milk with oats', 'Chicken with sweet potato']
+    };
 
-    <div class="card">
-      <img src="core.jpg" alt="Core">
-      <span>Core</span>
-      <h3>Core Workout</h3>
-      <p>Exercises for abs and body stability.</p>
+    const workoutPlans = {
+      beginner: {
+        title: '7 Days Beginner Workout Plan',
+        days: [
+          ['Day 1', 'Push Up, Squat, Plank', 'videos/day1-beginner.mp4'],
+          ['Day 2', 'Jumping Jacks, Arm Circles, Calf Raises', 'videos/day2-beginner.mp4'],
+          ['Day 3', 'Chair Dips, Squat, Glute Bridge', 'videos/day3-beginner.mp4'],
+          ['Day 4', 'Rest Day Stretching', 'videos/day4-beginner.mp4'],
+          ['Day 5', 'Push Up, Donkey Kicks, Plank', 'videos/day5-beginner.mp4'],
+          ['Day 6', 'Full Body Light Workout', 'videos/day6-beginner.mp4'],
+          ['Day 7', 'Recovery and Stretching', 'videos/day7-beginner.mp4']
+        ]
+      },
+      intermediate: {
+        title: '7 Days Intermediate Workout Plan',
+        days: [
+          ['Day 1', 'Push Up, Diamond Push Up, Squat', 'videos/day1-intermediate.mp4'],
+          ['Day 2', 'Plank, Jumping Jacks, Calf Raises', 'videos/day2-intermediate.mp4'],
+          ['Day 3', 'Chair Dips, Glute Bridge, Donkey Kicks', 'videos/day3-intermediate.mp4'],
+          ['Day 4', 'Core and Cardio Workout', 'videos/day4-intermediate.mp4'],
+          ['Day 5', 'Upper Body and Lower Body Mix', 'videos/day5-intermediate.mp4'],
+          ['Day 6', 'Full Body Moderate Workout', 'videos/day6-intermediate.mp4'],
+          ['Day 7', 'Stretching and Recovery', 'videos/day7-intermediate.mp4']
+        ]
+      },
+      advanced: {
+        title: '7 Days Advanced Workout Plan',
+        days: [
+          ['Day 1', 'Diamond Push Up, Chair Dips, Plank', 'videos/day1-advanced.mp4'],
+          ['Day 2', 'Jumping Jacks, Squat, Calf Raises', 'videos/day2-advanced.mp4'],
+          ['Day 3', 'Push Up, Donkey Kicks, Glute Bridge', 'videos/day3-advanced.mp4'],
+          ['Day 4', 'Intense Core Workout', 'videos/day4-advanced.mp4'],
+          ['Day 5', 'Upper Body Strength Workout', 'videos/day5-advanced.mp4'],
+          ['Day 6', 'Full Body Advanced Workout', 'videos/day6-advanced.mp4'],
+          ['Day 7', 'Active Recovery and Stretching', 'videos/day7-advanced.mp4']
+        ]
+      }
+    };
 
-      <div class="exercise-list">
-        <button onclick="showVideo('Plank', 'plank.mp4')">Plank</button><br><br>
-        <button onclick="showVideo('Jumping Jacks', 'jumping jacks.mp4')">Jumping Jacks</button>
-      </div>
-    </div>
+    function playVideo(title, videoSrc){
+      document.getElementById('videoTitle').textContent = title;
+      document.getElementById('videoContainer').innerHTML = `
+        <video controls autoplay>
+          <source src="${videoSrc}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      `;
+      document.getElementById('videoModal').classList.add('active');
+    }
 
-    <div class="card">
-      <img src="lower.jpg" alt="Lower Body">
-      <span>Lower Body</span>
-      <h3>Lower Body Workout</h3>
-      <p>Exercises for legs and glutes.</p>
+    function showPlan(level){
+      const plan = workoutPlans[level];
+      document.getElementById('planTitle').textContent = plan.title;
+      document.getElementById('planList').innerHTML = plan.days.map(day => `
+        <div class="day-card">
+          <h3>${day[0]}</h3>
+          <p>${day[1]}</p>
+          <video controls preload="metadata">
+            <source src="${day[2]}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      `).join('');
+      document.getElementById('planModal').classList.add('active');
+    }
 
-      <div class="exercise-list">
-        <button onclick="showVideo('Squat', 'squat.mp4')">Squat</button><br><br>
-        <button onclick="showVideo('Calf Raises', 'calf raises.mp4')">Calf Raises</button><br><br>
-        <button onclick="showVideo('Donkey Kicks', 'donkey kicks.mp4')">Donkey Kicks</button><br><br>
-        <button onclick="showVideo('Glute Bridge', 'glute bridge.mp4')">Glute Bridge</button>
-      </div>
-    </div>
+    function closeModal(){
+      document.getElementById('videoModal').classList.remove('active');
+      document.getElementById('planModal').classList.remove('active');
+      document.getElementById('videoContainer').innerHTML = '';
+      document.getElementById('planList').innerHTML = '';
+    }
 
-  </div>
-</section>
+    function closeOnOutside(event, modalId){
+      if(event.target.id === modalId){ closeModal(); }
+    }
 
-  <section id="bmi">
-    <div class="section-title">
-      <h1>BMI Calculator</h1>
-      <p>Know your body mass index.</p>
-    </div>
+    function openGenderPage(gender){
+      lastGender = gender;
+      document.getElementById('mainPage').classList.remove('active');
+      document.getElementById('genderPage').classList.add('active');
+      document.getElementById('genderTitle').textContent = routines[gender].title;
 
-    <div class="bmi-box">
-      <input type="number" id="height" placeholder="Height in cm">
-      <input type="number" id="weight" placeholder="Weight in kg">
-      <button onclick="calculateBMI()">Calculate BMI</button>
-      <h2 id="bmiResult"></h2>
-    </div>
-  </section>
+      const goals = [
+        ['lose', 'Lose Weight', '🔥'],
+        ['maintain', 'Maintain Weight', '⚖️'],
+        ['gain', 'Gain Weight', '💪']
+      ];
 
-  <section id="feedback">
-  <div class="section-title">
-    <h1>User Feedback</h1>
-    <p>Tell us about your workout experience.</p>
-  </div>
+      document.getElementById('routineGrid').innerHTML = goals.map(([key,label,icon]) => `
+        <div class="card" id="goal-${key}">
+          <span class="pill">${icon} ${label}</span>
+          <h3>${label} Routine</h3>
+          <div class="video-box">${label} Video Placeholder</div>
+          <div class="food-list">
+            <strong>Workout Routine:</strong>
+            <ul>${routines[gender][key].map(item => `<li>${item}</li>`).join('')}</ul>
+            <strong>Budget-Friendly Food:</strong>
+            <ul>${foods[key].map(item => `<li>${item}</li>`).join('')}</ul>
+          </div>
+        </div>
+      `).join('');
 
-  <div class="feedback-box">
+      document.getElementById('genderQuickGrid').innerHTML = `
+        <div class="card"><span class="pill">10 Minutes</span><h3>Beginner Quick Workout</h3><p>Easy exercises for beginners.</p><div class="video-box">Beginner Video</div><button class="small-btn" onclick="playVideo('Beginner Quick Workout','videos/${gender}-beginner-quick.mp4')">Watch Video</button></div>
+        <div class="card"><span class="pill">10 Minutes</span><h3>Intermediate Quick Workout</h3><p>Short but effective workout routine.</p><div class="video-box">Intermediate Video</div><button class="small-btn" onclick="playVideo('Intermediate Quick Workout','videos/${gender}-intermediate-quick.mp4')">Watch Video</button></div>
+        <div class="card"><span class="pill">10 Minutes</span><h3>Advanced Quick Workout</h3><p>Fast and intense home workout.</p><div class="video-box">Advanced Video</div><button class="small-btn" onclick="playVideo('Advanced Quick Workout','videos/${gender}-advanced-quick.mp4')">Watch Video</button></div>
+      `;
 
-  <div class="feedback-form">
+      document.getElementById('genderPlanGrid').innerHTML = `
+        <div class="card"><span class="pill">Beginner</span><h3>7 Days Beginner</h3><p>Perfect for students starting their fitness journey.</p><button class="small-btn" onclick="showPlan('beginner')">View Plan</button></div>
+        <div class="card"><span class="pill">Intermediate</span><h3>7 Days Intermediate</h3><p>Moderate intensity workout routine.</p><button class="small-btn" onclick="showPlan('intermediate')">View Plan</button></div>
+        <div class="card"><span class="pill">Advanced</span><h3>7 Days Advanced</h3><p>Intense home workout for advanced users.</p><button class="small-btn" onclick="showPlan('advanced')">View Plan</button></div>
+      `;
 
+      document.getElementById('genderWorkoutGrid').innerHTML = `
+        <div class="card"><div class="workout-img">Upper Body Video</div><span class="pill">Upper Body</span><h3>Upper Body Workout</h3><p>Exercises for chest, shoulders, and arms.</p><div class="exercise-list"><button onclick="playVideo('Push Up','videos/push-up.mp4')">Push Up</button><button onclick="playVideo('Diamond Push Up','videos/diamond-push-up.mp4')">Diamond Push Up</button><button onclick="playVideo('Chair Dips','videos/chair-dips.mp4')">Chair Dips</button><button onclick="playVideo('Arm Circles','videos/arm-circles.mp4')">Arm Circles</button></div></div>
+        <div class="card"><div class="workout-img">Core Video</div><span class="pill">Core</span><h3>Core Workout</h3><p>Exercises for abs and body stability.</p><div class="exercise-list"><button onclick="playVideo('Plank','videos/plank.mp4')">Plank</button><button onclick="playVideo('Jumping Jacks','videos/jumping-jacks.mp4')">Jumping Jacks</button></div></div>
+        <div class="card"><div class="workout-img">Lower Body Video</div><span class="pill">Lower Body</span><h3>Lower Body Workout</h3><p>Exercises for legs and glutes.</p><div class="exercise-list"><button onclick="playVideo('Squat','videos/squat.mp4')">Squat</button><button onclick="playVideo('Calf Raises','videos/calf-raises.mp4')">Calf Raises</button><button onclick="playVideo('Donkey Kicks','videos/donkey-kicks.mp4')">Donkey Kicks</button><button onclick="playVideo('Glute Bridge','videos/glute-bridge.mp4')">Glute Bridge</button></div></div>
+      `;
 
+      window.scrollTo(0,0);
+    }
 
-    <select id="feedbackRating">
-      <option value="">Select Rating</option>
-      <option value="1">⭐ 1 Star</option>
-      <option value="2">⭐⭐ 2 Stars</option>
-      <option value="3">⭐⭐⭐ 3 Stars</option>
-      <option value="4">⭐⭐⭐⭐ 4 Stars</option>
-      <option value="5">⭐⭐⭐⭐⭐ 5 Stars</option>
-    </select>
+    function goHome(){
+      closeModal();
+      document.getElementById('genderPage').classList.remove('active');
+      document.getElementById('mainPage').classList.add('active');
+      window.scrollTo(0,0);
+    }
 
-    <textarea id="feedbackMessage" placeholder="Share your workout experience..."></textarea>
+    function calculateBMI(){
+      const height = Number(document.getElementById('height').value) / 100;
+      const weight = Number(document.getElementById('weight').value);
+      const result = document.getElementById('bmiResult');
+      result.classList.add('show');
 
-    <button onclick="submitFeedback()">Submit Feedback</button>
+      if(!height || !weight || height <= 0 || weight <= 0){
+        result.innerHTML = 'Please enter a valid height and weight.';
+        return;
+      }
 
-  </div>
+      const bmi = weight / (height * height);
+      let status = '';
+      let suggestion = '';
+      let goal = '';
 
-  <div id="feedbackList"></div>
+      if(bmi < 18.5){
+        status = 'Below Average / Underweight';
+        suggestion = 'Suggested routine: Pick the Gain Weight workout routine.';
+        goal = 'gain';
+      }else if(bmi < 25){
+        status = 'Normal';
+        suggestion = 'Suggested routine: Pick the Maintain Weight workout routine.';
+        goal = 'maintain';
+      }else{
+        status = 'Above Average / Overweight';
+        suggestion = 'Suggested routine: Pick the Lose Weight workout routine.';
+        goal = 'lose';
+      }
 
-</div>
-</section>
+      result.innerHTML = `
+        <strong>Your BMI: ${bmi.toFixed(1)}</strong><br>
+        Status: ${status}<br>
+        ${suggestion}<br>
+        <button class="small-btn suggestion-btn" onclick="openGenderPage(lastGender); setTimeout(() => document.getElementById('goal-${goal}').scrollIntoView({behavior:'smooth', block:'center'}), 80);">Open Suggested Routine</button>
+      `;
+    }
 
-
-  <footer>
-    <p>© 2026 HomeBuddy | Home Workout Website</p>
-  </footer>
-
-  <script src="main.js"></script>
+    document.addEventListener('keydown', function(event){
+      if(event.key === 'Escape') closeModal();
+    });
+  </script>
 </body>
 </html>

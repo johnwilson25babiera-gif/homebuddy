@@ -379,7 +379,7 @@
       document.getElementById('videoTitle').textContent = title;
       document.getElementById('videoContainer').innerHTML = `
         <video controls autoplay>
-          <source src="${videoSrc}" type="video/mp4">
+          <source src="highlight.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       `;
@@ -425,37 +425,41 @@
         ['gain', 'Gain Weight', '💪']
       ];
 
-      document.getElementById('routineGrid').innerHTML = goals.map(([key,label,icon]) => `
-        <div class="card" id="goal-${key}">
-          <span class="pill">${icon} ${label}</span>
-          <h3>${label} Routine</h3>
-          <div class="video-box">${label} Video Placeholder</div>
-          <div class="food-list">
-            <strong>Workout Routine:</strong>
-            <ul>${routines[gender][key].map(item => `<li>${item}</li>`).join('')}</ul>
-            <strong>Budget-Friendly Food:</strong>
-            <ul>${foods[key].map(item => `<li>${item}</li>`).join('')}</ul>
-          </div>
-        </div>
-      `).join('');
+     document.getElementById('routineGrid').innerHTML = goals.map(([key,label,icon]) => `
+  <div class="card" id="goal-${key}">
+    <span class="pill">${icon} ${label}</span>
+    <h3>${label} Routine</h3>
+    <div class="video-box">
+      <video controls>
+        <source src="${key === 'lose' ? 'jumping jacks.mp4' : key === 'maintain' ? 'plank.mp4' : 'glute bridge.mp4'}" type="video/mp4">
+      </video>
+    </div>
+    <div class="food-list">
+      <strong>Workout Routine:</strong>
+      <ul>${routines[gender][key].map(item => `<li>${item}</li>`).join('')}</ul>
+      <strong>Budget-Friendly Food:</strong>
+      <ul>${foods[key].map(item => `<li>${item}</li>`).join('')}</ul>
+    </div>
+  </div>
+`).join('');
 
-      document.getElementById('genderQuickGrid').innerHTML = `
-        <div class="card"><span class="pill">10 Minutes</span><h3>Beginner Quick Workout</h3><p>Easy exercises for beginners.</p><div class="video-box">Beginner Video</div><button class="small-btn" onclick="playVideo('Beginner Quick Workout','videos/${gender}-beginner-quick.mp4')">Watch Video</button></div>
-        <div class="card"><span class="pill">10 Minutes</span><h3>Intermediate Quick Workout</h3><p>Short but effective workout routine.</p><div class="video-box">Intermediate Video</div><button class="small-btn" onclick="playVideo('Intermediate Quick Workout','videos/${gender}-intermediate-quick.mp4')">Watch Video</button></div>
-        <div class="card"><span class="pill">10 Minutes</span><h3>Advanced Quick Workout</h3><p>Fast and intense home workout.</p><div class="video-box">Advanced Video</div><button class="small-btn" onclick="playVideo('Advanced Quick Workout','videos/${gender}-advanced-quick.mp4')">Watch Video</button></div>
-      `;
+document.getElementById('genderQuickGrid').innerHTML = `
+  <div class="card"><span class="pill">10 Minutes</span><h3>Beginner Quick Workout</h3><p>Easy exercises for beginners.</p><div class="video-box"><video controls><source src="push up.mp4" type="video/mp4"></video></div><button class="small-btn" onclick="playVideo('Beginner Quick Workout','push up.mp4')">Watch Video</button></div>
+  <div class="card"><span class="pill">10 Minutes</span><h3>Intermediate Quick Workout</h3><p>Short but effective workout routine.</p><div class="video-box"><video controls><source src="squat.mp4" type="video/mp4"></video></div><button class="small-btn" onclick="playVideo('Intermediate Quick Workout','squat.mp4')">Watch Video</button></div>
+  <div class="card"><span class="pill">10 Minutes</span><h3>Advanced Quick Workout</h3><p>Fast and intense home workout.</p><div class="video-box"><video controls><source src="diamond push up.mp4" type="video/mp4"></video></div><button class="small-btn" onclick="playVideo('Advanced Quick Workout','diamond push up.mp4')">Watch Video</button></div>
+`;
 
-      document.getElementById('genderPlanGrid').innerHTML = `
-        <div class="card"><span class="pill">Beginner</span><h3>7 Days Beginner</h3><p>Perfect for students starting their fitness journey.</p><button class="small-btn" onclick="showPlan('beginner')">View Plan</button></div>
-        <div class="card"><span class="pill">Intermediate</span><h3>7 Days Intermediate</h3><p>Moderate intensity workout routine.</p><button class="small-btn" onclick="showPlan('intermediate')">View Plan</button></div>
-        <div class="card"><span class="pill">Advanced</span><h3>7 Days Advanced</h3><p>Intense home workout for advanced users.</p><button class="small-btn" onclick="showPlan('advanced')">View Plan</button></div>
-      `;
+document.getElementById('genderPlanGrid').innerHTML = `
+  <div class="card"><span class="pill">Beginner</span><h3>7 Days Beginner</h3><p>Perfect for students starting their fitness journey.</p><button class="small-btn" onclick="showPlan('beginner')">View Plan</button></div>
+  <div class="card"><span class="pill">Intermediate</span><h3>7 Days Intermediate</h3><p>Moderate intensity workout routine.</p><button class="small-btn" onclick="showPlan('intermediate')">View Plan</button></div>
+  <div class="card"><span class="pill">Advanced</span><h3>7 Days Advanced</h3><p>Intense home workout for advanced users.</p><button class="small-btn" onclick="showPlan('advanced')">View Plan</button></div>
+`;
 
-      document.getElementById('genderWorkoutGrid').innerHTML = `
-        <div class="card"><div class="workout-img">Upper Body Video</div><span class="pill">Upper Body</span><h3>Upper Body Workout</h3><p>Exercises for chest, shoulders, and arms.</p><div class="exercise-list"><button onclick="playVideo('Push Up','videos/push-up.mp4')">Push Up</button><button onclick="playVideo('Diamond Push Up','videos/diamond-push-up.mp4')">Diamond Push Up</button><button onclick="playVideo('Chair Dips','videos/chair-dips.mp4')">Chair Dips</button><button onclick="playVideo('Arm Circles','videos/arm-circles.mp4')">Arm Circles</button></div></div>
-        <div class="card"><div class="workout-img">Core Video</div><span class="pill">Core</span><h3>Core Workout</h3><p>Exercises for abs and body stability.</p><div class="exercise-list"><button onclick="playVideo('Plank','videos/plank.mp4')">Plank</button><button onclick="playVideo('Jumping Jacks','videos/jumping-jacks.mp4')">Jumping Jacks</button></div></div>
-        <div class="card"><div class="workout-img">Lower Body Video</div><span class="pill">Lower Body</span><h3>Lower Body Workout</h3><p>Exercises for legs and glutes.</p><div class="exercise-list"><button onclick="playVideo('Squat','videos/squat.mp4')">Squat</button><button onclick="playVideo('Calf Raises','videos/calf-raises.mp4')">Calf Raises</button><button onclick="playVideo('Donkey Kicks','videos/donkey-kicks.mp4')">Donkey Kicks</button><button onclick="playVideo('Glute Bridge','videos/glute-bridge.mp4')">Glute Bridge</button></div></div>
-      `;
+document.getElementById('genderWorkoutGrid').innerHTML = `
+  <div class="card"><div class="workout-img"><video controls><source src="push up.mp4" type="video/mp4"></video></div><span class="pill">Upper Body</span><h3>Upper Body Workout</h3><p>Exercises for chest, shoulders, and arms.</p><div class="exercise-list"><button onclick="playVideo('Push Up','push up.mp4')">Push Up</button><button onclick="playVideo('Diamond Push Up','diamond push up.mp4')">Diamond Push Up</button><button onclick="playVideo('Chair Dips','chair dips.mp4')">Chair Dips</button><button onclick="playVideo('Arm Circles','arm circles.mp4')">Arm Circles</button></div></div>
+  <div class="card"><div class="workout-img"><video controls><source src="core.mp4" type="video/mp4"></video></div><span class="pill">Core</span><h3>Core Workout</h3><p>Exercises for abs and body stability.</p><div class="exercise-list"><button onclick="playVideo('Core','core.mp4')">Core</button><button onclick="playVideo('Plank','plank.mp4')">Plank</button><button onclick="playVideo('Jumping Jacks','jumping jacks.mp4')">Jumping Jacks</button></div></div>
+  <div class="card"><div class="workout-img"><video controls><source src="squat.mp4" type="video/mp4"></video></div><span class="pill">Lower Body</span><h3>Lower Body Workout</h3><p>Exercises for legs and glutes.</p><div class="exercise-list"><button onclick="playVideo('Squat','squat.mp4')">Squat</button><button onclick="playVideo('Calf Raises','calf raises.mp4')">Calf Raises</button><button onclick="playVideo('Donkey Kicks','donkey kicks.mp4')">Donkey Kicks</button><button onclick="playVideo('Glute Bridge','glute bridge.mp4')">Glute Bridge</button></div></div>
+`;
 
       window.scrollTo(0,0);
     }

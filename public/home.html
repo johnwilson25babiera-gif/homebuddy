@@ -450,8 +450,18 @@ document.getElementById('genderQuickGrid').innerHTML = `
     <span class="pill">10 Minutes</span>
     <h3>Beginner Quick Workout</h3>
     <p>Easy exercises for beginners.</p>
-    <div class="video-box">Beginner Video</div>
-    <button class="small-btn" onclick="playVideo('Beginner Quick Workout','push up.mp4')">
+
+    <div class="video-box" id="beginnerVideoBox">
+      Beginner Video
+    </div>
+
+    <button class="small-btn" onclick="
+      document.getElementById('beginnerVideoBox').innerHTML = `
+        <video controls autoplay>
+          <source src='push up.mp4' type='video/mp4'>
+        </video>
+      `;
+    ">
       Watch Video
     </button>
   </div>
@@ -460,8 +470,18 @@ document.getElementById('genderQuickGrid').innerHTML = `
     <span class="pill">10 Minutes</span>
     <h3>Intermediate Quick Workout</h3>
     <p>Short but effective workout routine.</p>
-    <div class="video-box">Intermediate Video</div>
-    <button class="small-btn" onclick="playVideo('Intermediate Quick Workout','squat.mp4')">
+
+    <div class="video-box" id="intermediateVideoBox">
+      Intermediate Video
+    </div>
+
+    <button class="small-btn" onclick="
+      document.getElementById('intermediateVideoBox').innerHTML = `
+        <video controls autoplay>
+          <source src='squat.mp4' type='video/mp4'>
+        </video>
+      `;
+    ">
       Watch Video
     </button>
   </div>
@@ -470,8 +490,49 @@ document.getElementById('genderQuickGrid').innerHTML = `
     <span class="pill">10 Minutes</span>
     <h3>Advanced Quick Workout</h3>
     <p>Fast and intense home workout.</p>
-    <div class="video-box">Advanced Video</div>
-    <button class="small-btn" onclick="playVideo('Advanced Quick Workout','diamond push up.mp4')">
+
+    <div class="video-box" id="advancedVideoBox">
+      Advanced Video
+    </div>
+
+    <button class="small-btn" onclick="
+      document.getElementById('advancedVideoBox').innerHTML = `
+        <video controls autoplay>
+          <source src='diamond push up.mp4' type='video/mp4'>
+        </video>
+      `;
+    ">
+      Watch Video
+    </button>
+  </div>
+`;
+    <button class="small-btn" onclick="
+      document.getElementById('intermediateVideoBox').innerHTML = `
+        <video controls autoplay>
+          <source src='squat.mp4' type='video/mp4'>
+        </video>
+      `;
+    ">
+      Watch Video
+    </button>
+  </div>
+
+  <div class="card">
+    <span class="pill">10 Minutes</span>
+    <h3>Advanced Quick Workout</h3>
+    <p>Fast and intense home workout.</p>
+
+    <div class="video-box" id="advancedVideoBox">
+      Advanced Video
+    </div>
+
+    <button class="small-btn" onclick="
+      document.getElementById('advancedVideoBox').innerHTML = `
+        <video controls autoplay>
+          <source src='diamond push up.mp4' type='video/mp4'>
+        </video>
+      `;
+    ">
       Watch Video
     </button>
   </div>

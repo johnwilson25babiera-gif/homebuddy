@@ -543,6 +543,46 @@
       padding:20px;
     }
 
+    .day-card.done{
+      border-color:rgba(45, 210, 115, .65);
+      box-shadow:0 0 0 1px rgba(45, 210, 115, .15);
+    }
+
+    .day-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:10px;
+    }
+
+    .done-badge{
+      display:none;
+      background:rgba(45, 210, 115, .14);
+      border:1px solid rgba(45, 210, 115, .50);
+      color:#6dff9e;
+      padding:8px 13px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .day-card.done .done-badge{
+      display:inline-flex;
+    }
+
+    .progress-note{
+      background:#181818;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px 16px;
+      color:#eee;
+      margin-bottom:18px;
+      text-align:center;
+      font-weight:800;
+    }
+
     .day-card h3{
       color:var(--orange);
       margin-bottom:10px;
@@ -1067,23 +1107,79 @@
       document.getElementById('videoModal').classList.add('active');
     }
 
+    function getProgressKey(goal, level, dayNumber){
+      return `homebuddy_${lastGender}_${goal}_${level}_day_${dayNumber}`;
+    }
+
+    function isDayDone(goal, level, dayNumber){
+      return localStorage.getItem(getProgressKey(goal, level, dayNumber)) === 'done';
+    }
+
+    function markDayDone(goal, level, dayNumber){
+      localStorage.setItem(getProgressKey(goal, level, dayNumber), 'done');
+
+      const card = document.getElementById(`dayCard_${dayNumber}`);
+      if(card){
+        card.classList.add('done');
+      }
+
+      updateProgressNote(goal, level);
+      alert(`Great job! You completed Day ${dayNumber}.`);
+    }
+
+    function updateProgressNote(goal, level){
+      const plan = workoutPlans[goal][level];
+      const doneCount = plan.days.filter((day, index) => isDayDone(goal, level, index + 1)).length;
+      const progressText = document.getElementById('progressText');
+
+      if(progressText){
+        progressText.textContent = `Progress saved: ${doneCount} out of ${plan.days.length} days completed.`;
+      }
+    }
+
+    function resetPlanProgress(goal, level){
+      const plan = workoutPlans[goal][level];
+
+      plan.days.forEach((day, index) => {
+        localStorage.removeItem(getProgressKey(goal, level, index + 1));
+      });
+
+      showPlan(goal, level);
+    }
+
     function showPlan(goal, level){
       const plan = workoutPlans[goal][level];
 
       document.getElementById('planTitle').textContent = plan.title;
 
-      document.getElementById('planList').innerHTML = plan.days.map(day => `
-        <div class="day-card">
-          <h3>${day[0]}</h3>
-          <p>${day[1]}</p>
+      document.getElementById('planList').innerHTML = `
+        <div class="progress-note" id="progressText"></div>
 
-          <video controls preload="metadata">
-            <source src="${day[2]}" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      `).join('');
+        ${plan.days.map((day, index) => {
+          const dayNumber = index + 1;
+          const doneClass = isDayDone(goal, level, dayNumber) ? 'done' : '';
 
+          return `
+            <div class="day-card ${doneClass}" id="dayCard_${dayNumber}">
+              <div class="day-head">
+                <h3>${day[0]}</h3>
+                <span class="done-badge">✓ Completed</span>
+              </div>
+
+              <p>${day[1]}</p>
+
+              <video controls preload="metadata" onended="markDayDone('${goal}','${level}',${dayNumber})">
+                <source src="${day[2]}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          `;
+        }).join('')}
+
+        <button class="small-btn close-btn" onclick="resetPlanProgress('${goal}','${level}')">Reset This Routine Progress</button>
+      `;
+
+      updateProgressNote(goal, level);
       document.getElementById('planModal').classList.add('active');
     }
 

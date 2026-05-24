@@ -17,9 +17,19 @@
       --shadow:0 18px 45px rgba(0,0,0,.40);
     }
 
-    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, Helvetica, sans-serif;}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
     html{scroll-behavior:smooth;}
-    body{background:radial-gradient(circle at top left,#2b2119 0,#151515 35%,#111 100%);color:var(--text);}
+
+    body{
+      background:radial-gradient(circle at top left,#2b2119 0,#151515 35%,#111 100%);
+      color:var(--text);
+    }
 
     header{
       width:100%;
@@ -36,8 +46,14 @@
       box-shadow:0 8px 25px rgba(0,0,0,.35);
     }
 
-    .brand{display:flex;align-items:center;gap:14px;}
-    .logo-circle,.gender-logo{
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .logo-circle,
+    .gender-logo{
       border:3px solid var(--orange);
       border-radius:50%;
       display:flex;
@@ -47,25 +63,75 @@
       background:#111;
       box-shadow:0 0 0 5px rgba(255,122,26,.08);
     }
+
+    .logo-circle{
+      width:72px;
+      height:72px;
+      color:var(--orange);
+      font-weight:900;
+      font-size:12px;
+      text-align:center;
+      line-height:1.1;
+    }
+
     .logo-circle img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:50%;
-}
-    .logo-circle{width:72px;height:72px;color:var(--orange);font-weight:900;font-size:12px;text-align:center;line-height:1.1;}
-    .brand h1{color:var(--orange);font-size:30px;letter-spacing:.5px;}
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:50%;
+    }
 
-    nav{display:flex;gap:24px;align-items:center;}
-    nav a{color:white;text-decoration:none;font-weight:800;font-size:16px;transition:.25s;}
-    nav a:hover{color:var(--orange);}
+    .brand h1{
+      color:var(--orange);
+      font-size:30px;
+      letter-spacing:.5px;
+    }
 
-    .right-nav{display:flex;align-items:center;gap:12px;}
-    .gender-logo{width:62px;height:62px;cursor:pointer;font-size:31px;transition:.25s;}
-    .gender-logo:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 0 25px rgba(255,122,26,.55);}
+    nav{
+      display:flex;
+      gap:24px;
+      align-items:center;
+    }
 
-    button,a{ -webkit-tap-highlight-color:transparent; }
-    .logout,.btn,.small-btn{
+    nav a{
+      color:white;
+      text-decoration:none;
+      font-weight:800;
+      font-size:16px;
+      transition:.25s;
+    }
+
+    nav a:hover{
+      color:var(--orange);
+    }
+
+    .right-nav{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .gender-logo{
+      width:62px;
+      height:62px;
+      cursor:pointer;
+      font-size:31px;
+      transition:.25s;
+    }
+
+    .gender-logo:hover{
+      transform:translateY(-4px) scale(1.05);
+      box-shadow:0 0 25px rgba(255,122,26,.55);
+    }
+
+    button,
+    a{
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    .logout,
+    .btn,
+    .small-btn{
       border:none;
       background:linear-gradient(135deg,var(--orange),var(--orange2));
       color:white;
@@ -79,13 +145,43 @@
       transition:.25s;
       box-shadow:0 10px 24px rgba(255,122,26,.20);
     }
-    .btn:hover,.logout:hover,.small-btn:hover{transform:translateY(-2px);filter:brightness(1.07);}
-    .small-btn{padding:12px 24px;margin:8px;}
-    .close-btn{background:#444;box-shadow:none;}
 
-    section{padding:78px 7%;}
-    .page{display:none;min-height:100vh;}
-    .page.active{display:block;}
+    .btn:hover,
+    .logout:hover,
+    .small-btn:hover{
+      transform:translateY(-2px);
+      filter:brightness(1.07);
+    }
+
+    .small-btn{
+      padding:12px 24px;
+      margin:8px;
+    }
+
+    .close-btn{
+      background:#444;
+      box-shadow:none;
+    }
+
+    .outline-btn{
+      background:transparent;
+      border:2px solid var(--orange);
+      color:var(--orange);
+      box-shadow:none;
+    }
+
+    section{
+      padding:78px 7%;
+    }
+
+    .page{
+      display:none;
+      min-height:100vh;
+    }
+
+    .page.active{
+      display:block;
+    }
 
     .hero{
       min-height:86vh;
@@ -94,6 +190,7 @@
       gap:60px;
       align-items:center;
     }
+
     .tagline{
       display:inline-flex;
       align-items:center;
@@ -106,10 +203,29 @@
       font-weight:800;
       margin-bottom:20px;
     }
-    .hero h2{font-size:clamp(42px,6vw,72px);color:var(--orange);line-height:1.06;margin-bottom:22px;}
-    .hero p{font-size:20px;line-height:1.65;margin-bottom:30px;color:#f0f0f0;max-width:680px;}
-    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
-    .outline-btn{background:transparent;border:2px solid var(--orange);color:var(--orange);box-shadow:none;}
+
+    .hero h2{
+      font-size:clamp(42px,6vw,72px);
+      color:var(--orange);
+      line-height:1.06;
+      margin-bottom:22px;
+    }
+
+    .hero p{
+      font-size:20px;
+      line-height:1.65;
+      margin-bottom:30px;
+      color:#f0f0f0;
+      max-width:680px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
     .hero-video{
       min-height:410px;
       border-radius:32px;
@@ -122,101 +238,431 @@
       border:1px solid var(--line);
       position:relative;
     }
+
     .hero-video:before{
       content:"";
       position:absolute;
       inset:-80px;
       background:radial-gradient(circle,rgba(255,122,26,.20),transparent 60%);
     }
-    .video-placeholder{position:relative;width:88%;min-height:300px;border:3px dashed #666;border-radius:24px;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;color:#ddd;font-size:24px;text-align:center;padding:25px;}
-    .play-icon{width:74px;height:74px;border-radius:50%;background:var(--orange);display:grid;place-items:center;font-size:34px;box-shadow:0 0 30px rgba(255,122,26,.50);}
 
-    .title{text-align:center;margin-bottom:42px;}
-    .title h2{font-size:clamp(34px,4vw,52px);color:var(--orange);margin-bottom:12px;}
-    .title p{font-size:20px;color:var(--muted);line-height:1.5;}
+    .hero-video video{
+      position:relative;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:28px;
+    }
 
-    .motivation-card{max-width:1000px;margin:auto;background:linear-gradient(145deg,#2c2c2c,#202020);padding:50px;border-radius:28px;text-align:center;box-shadow:var(--shadow);border:1px solid var(--line);}
-    .motivation-card h3{font-size:clamp(26px,3vw,38px);color:var(--orange);margin-bottom:14px;}
-    .motivation-card p{color:#ddd;font-size:19px;line-height:1.6;}
+    .title{
+      text-align:center;
+      margin-bottom:42px;
+    }
 
-    .cards,.routine-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
-    .card{background:linear-gradient(145deg,#2b2b2b,#202020);border:1px solid var(--line);border-radius:28px;padding:34px 26px;text-align:center;box-shadow:var(--shadow);min-height:285px;transition:.25s;}
-    .card:hover{transform:translateY(-6px);border-color:rgba(255,122,26,.35);}
-    .pill{display:inline-block;background:rgba(255,122,26,.12);border:1px solid rgba(255,122,26,.25);color:var(--orange);padding:10px 20px;border-radius:999px;font-size:17px;font-weight:900;margin-bottom:18px;}
-    .card h3{color:var(--orange);font-size:25px;margin-bottom:16px;}
-    .card p{font-size:18px;line-height:1.55;margin-bottom:22px;color:#e8e8e8;}
+    .title h2{
+      font-size:clamp(34px,4vw,52px);
+      color:var(--orange);
+      margin-bottom:12px;
+    }
 
-    .workout-img,.video-box{height:165px;background:#171717;border-radius:18px;border:2px dashed #555;margin-bottom:22px;display:flex;align-items:center;justify-content:center;color:#aaa;overflow:hidden;padding:15px;}
-    .workout-img video,.video-box video,.hero-video video{width:100%;height:100%;object-fit:cover;border-radius:14px;}
-    .exercise-list button{display:block;width:90%;margin:10px auto;background:#333;border:1px solid rgba(255,255,255,.10);color:white;padding:13px 18px;border-radius:20px;font-weight:800;cursor:pointer;transition:.22s;}
-    .exercise-list button:hover{background:var(--orange);transform:translateX(3px);}
+    .title p{
+      font-size:20px;
+      color:var(--muted);
+      line-height:1.5;
+    }
 
-    .bmi-box{max-width:660px;margin:auto;background:linear-gradient(145deg,#2b2b2b,#202020);padding:36px;border-radius:26px;text-align:center;box-shadow:var(--shadow);border:1px solid var(--line);}
-    .input-group{text-align:left;margin-bottom:14px;}
-    .input-group label{display:block;margin:0 0 8px 4px;color:#f1f1f1;font-weight:800;}
-    .bmi-box input{width:100%;padding:17px;border:none;border-radius:14px;font-size:16px;outline:none;background:#f4f4f4;}
-    #bmiResult{margin-top:20px;font-size:19px;line-height:1.65;background:#181818;border-radius:18px;padding:18px;display:none;border:1px solid var(--line);}
-    #bmiResult.show{display:block;}
-    .suggestion-btn{margin-top:14px;}
+    .motivation-card{
+      max-width:1000px;
+      margin:auto;
+      background:linear-gradient(145deg,#2c2c2c,#202020);
+      padding:50px;
+      border-radius:28px;
+      text-align:center;
+      box-shadow:var(--shadow);
+      border:1px solid var(--line);
+    }
 
-    .food-list{text-align:left;font-size:17px;line-height:1.75;margin-top:15px;color:#eee;}
-    .food-list ul{margin:8px 0 18px 18px;}
-    .food-list li{margin-bottom:5px;}
+    .motivation-card h3{
+      font-size:clamp(26px,3vw,38px);
+      color:var(--orange);
+      margin-bottom:14px;
+    }
 
-    .modal{display:none;position:fixed;z-index:999;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.86);align-items:center;justify-content:center;padding:22px;}
-    .modal.active{display:flex;}
-    .modal-content{background:#252525;width:min(980px,96%);max-height:90vh;overflow:auto;border-radius:28px;padding:28px;text-align:center;box-shadow:0 0 45px rgba(0,0,0,.9);border:1px solid var(--line);}
-    .modal-content h2{color:var(--orange);margin-bottom:20px;font-size:32px;}
-    .modal-video{height:430px;background:#111;border:2px dashed #555;border-radius:20px;margin-bottom:20px;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#aaa;}
-    .modal-video video{width:100%;height:100%;object-fit:cover;}
-    .plan-list{text-align:left;display:grid;gap:18px;margin-top:20px;}
-    .day-card{background:#181818;border:1px solid var(--line);border-radius:20px;padding:20px;}
-    .day-card h3{color:var(--orange);margin-bottom:10px;}
-    .day-card p{font-size:18px;margin-bottom:12px;color:#eee;}
-    .day-card video{width:100%;max-height:260px;background:#111;border-radius:14px;}
+    .motivation-card p{
+      color:#ddd;
+      font-size:19px;
+      line-height:1.6;
+    }
 
-    footer{text-align:center;background:#0f0f0f;padding:30px;color:#ccc;border-top:1px solid var(--line);}
+    .cards,
+    .routine-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:28px;
+    }
+
+    .card{
+      background:linear-gradient(145deg,#2b2b2b,#202020);
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:34px 26px;
+      text-align:center;
+      box-shadow:var(--shadow);
+      min-height:285px;
+      transition:.25s;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(255,122,26,.35);
+    }
+
+    .pill{
+      display:inline-block;
+      background:rgba(255,122,26,.12);
+      border:1px solid rgba(255,122,26,.25);
+      color:var(--orange);
+      padding:10px 20px;
+      border-radius:999px;
+      font-size:17px;
+      font-weight:900;
+      margin-bottom:18px;
+    }
+
+    .card h3{
+      color:var(--orange);
+      font-size:25px;
+      margin-bottom:16px;
+    }
+
+    .card p{
+      font-size:18px;
+      line-height:1.55;
+      margin-bottom:22px;
+      color:#e8e8e8;
+    }
+
+    .workout-img,
+    .video-box{
+      height:165px;
+      background:#171717;
+      border-radius:18px;
+      border:2px dashed #555;
+      margin-bottom:22px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#aaa;
+      overflow:hidden;
+      padding:15px;
+    }
+
+    .workout-img video,
+    .video-box video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:14px;
+    }
+
+    .exercise-list button{
+      display:block;
+      width:90%;
+      margin:10px auto;
+      background:#333;
+      border:1px solid rgba(255,255,255,.10);
+      color:white;
+      padding:13px 18px;
+      border-radius:20px;
+      font-weight:800;
+      cursor:pointer;
+      transition:.22s;
+    }
+
+    .exercise-list button:hover{
+      background:var(--orange);
+      transform:translateX(3px);
+    }
+
+    .table-wrap{
+      max-width:1100px;
+      margin:auto;
+      background:linear-gradient(145deg,#2b2b2b,#202020);
+      border:1px solid var(--line);
+      border-radius:26px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .food-table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:760px;
+    }
+
+    .food-table th,
+    .food-table td{
+      padding:18px 20px;
+      text-align:left;
+      border-bottom:1px solid var(--line);
+      font-size:17px;
+      line-height:1.45;
+      vertical-align:top;
+    }
+
+    .food-table th{
+      background:rgba(255,122,26,.18);
+      color:var(--orange);
+      font-size:19px;
+    }
+
+    .food-table tr:last-child td{
+      border-bottom:none;
+    }
+
+    .table-scroll{
+      overflow-x:auto;
+    }
+
+    .bmi-box{
+      max-width:660px;
+      margin:auto;
+      background:linear-gradient(145deg,#2b2b2b,#202020);
+      padding:36px;
+      border-radius:26px;
+      text-align:center;
+      box-shadow:var(--shadow);
+      border:1px solid var(--line);
+    }
+
+    .input-group{
+      text-align:left;
+      margin-bottom:14px;
+    }
+
+    .input-group label{
+      display:block;
+      margin:0 0 8px 4px;
+      color:#f1f1f1;
+      font-weight:800;
+    }
+
+    .bmi-box input{
+      width:100%;
+      padding:17px;
+      border:none;
+      border-radius:14px;
+      font-size:16px;
+      outline:none;
+      background:#f4f4f4;
+    }
+
+    #bmiResult{
+      margin-top:20px;
+      font-size:19px;
+      line-height:1.65;
+      background:#181818;
+      border-radius:18px;
+      padding:18px;
+      display:none;
+      border:1px solid var(--line);
+    }
+
+    #bmiResult.show{
+      display:block;
+    }
+
+    .modal{
+      display:none;
+      position:fixed;
+      z-index:999;
+      left:0;
+      top:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,.86);
+      align-items:center;
+      justify-content:center;
+      padding:22px;
+    }
+
+    .modal.active{
+      display:flex;
+    }
+
+    .modal-content{
+      background:#252525;
+      width:min(980px,96%);
+      max-height:90vh;
+      overflow:auto;
+      border-radius:28px;
+      padding:28px;
+      text-align:center;
+      box-shadow:0 0 45px rgba(0,0,0,.9);
+      border:1px solid var(--line);
+    }
+
+    .modal-content h2{
+      color:var(--orange);
+      margin-bottom:20px;
+      font-size:32px;
+    }
+
+    .modal-video{
+      height:430px;
+      background:#111;
+      border:2px dashed #555;
+      border-radius:20px;
+      margin-bottom:20px;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#aaa;
+    }
+
+    .modal-video video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .plan-list{
+      text-align:left;
+      display:grid;
+      gap:18px;
+      margin-top:20px;
+    }
+
+    .day-card{
+      background:#181818;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:20px;
+    }
+
+    .day-card h3{
+      color:var(--orange);
+      margin-bottom:10px;
+    }
+
+    .day-card p{
+      font-size:18px;
+      margin-bottom:12px;
+      color:#eee;
+    }
+
+    .day-card video{
+      width:100%;
+      max-height:260px;
+      background:#111;
+      border-radius:14px;
+    }
+
+    footer{
+      text-align:center;
+      background:#0f0f0f;
+      padding:30px;
+      color:#ccc;
+      border-top:1px solid var(--line);
+    }
 
     @media(max-width:1050px){
-      header{flex-direction:column;gap:16px;padding:14px 5%;}
-      nav,.right-nav{flex-wrap:wrap;justify-content:center;gap:14px;}
-      .hero,.cards,.routine-grid{grid-template-columns:1fr;}
-      .hero{min-height:auto;padding-top:55px;}
-      .hero-video{min-height:300px;}
-      .modal-video{height:270px;}
+      header{
+        flex-direction:column;
+        gap:16px;
+        padding:14px 5%;
+      }
+
+      nav,
+      .right-nav{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:14px;
+      }
+
+      .hero,
+      .cards,
+      .routine-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero{
+        min-height:auto;
+        padding-top:55px;
+      }
+
+      .hero-video{
+        min-height:300px;
+      }
+
+      .modal-video{
+        height:270px;
+      }
     }
 
     @media(max-width:560px){
-      section{padding:60px 5%;}
-      .brand h1{font-size:25px;}
-      .logo-circle{width:58px;height:58px;font-size:10px;}
-      .gender-logo{width:54px;height:54px;font-size:27px;}
-      nav a{font-size:14px;}
-      .card,.bmi-box,.motivation-card{padding:26px 18px;}
-      .hero p,.title p{font-size:17px;}
+      section{
+        padding:60px 5%;
+      }
+
+      .brand h1{
+        font-size:25px;
+      }
+
+      .logo-circle{
+        width:58px;
+        height:58px;
+        font-size:10px;
+      }
+
+      .gender-logo{
+        width:54px;
+        height:54px;
+        font-size:27px;
+      }
+
+      nav a{
+        font-size:14px;
+      }
+
+      .card,
+      .bmi-box,
+      .motivation-card{
+        padding:26px 18px;
+      }
+
+      .hero p,
+      .title p{
+        font-size:17px;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- MAIN PAGE -->
   <div id="mainPage" class="page active">
     <header>
       <div class="brand">
-       <div class="logo-circle">
-  <img src="1.jpg" alt="HomeBuddy Logo">
-</div>
+        <div class="logo-circle">
+          <img src="1.jpg" alt="HomeBuddy Logo">
+        </div>
         <h1>HomeBuddy</h1>
       </div>
+
       <nav>
         <a href="#home">Home</a>
         <a href="#bmi">BMI</a>
+        <a href="#videos">Videos</a>
+        <a href="#food">Food</a>
         <a href="#motivation">Motivation</a>
       </nav>
+
       <div class="right-nav">
         <div class="gender-logo" onclick="openGenderPage('men')" title="Men Workout">🏋️‍♂️</div>
         <div class="gender-logo" onclick="openGenderPage('women')" title="Women Workout">🏋️‍♀️</div>
- <button class="logout" onclick="window.location.href='index.html'">
-  Logout
-</button>
+        <button class="logout" onclick="window.location.href='index.html'">Logout</button>
       </div>
     </header>
 
@@ -225,85 +671,235 @@
         <div class="tagline">🏠 Science-based home fitness</div>
         <h2>Workout at Home with HomeBuddy</h2>
         <p>Start your fitness journey with simple home workouts, budget-friendly meal ideas, BMI guidance, and easy workout videos for students.</p>
+
         <div class="hero-actions">
-          <a class="btn" href="#bmi">Check BMI</a>
+          <a class="btn" href="#bmi">Check BMI First</a>
           <button class="small-btn outline-btn" onclick="openGenderPage('men')">Men Workouts</button>
           <button class="small-btn outline-btn" onclick="openGenderPage('women')">Women Workouts</button>
         </div>
       </div>
-     <div class="hero-video">
-  <video controls autoplay muted loop>
-    <source src="highlight.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
+
+      <div class="hero-video">
+        <video controls autoplay muted loop>
+          <source src="highlight.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <!-- BMI IS NOW ON TOP -->
+    <section id="bmi">
+      <div class="title">
+        <h2>Check Your BMI First</h2>
+        <p>Before choosing a workout routine, enter your height and weight to know your suggested workout goal.</p>
+      </div>
+
+      <div class="bmi-box">
+        <div class="input-group">
+          <label for="height">Height in centimeters</label>
+          <input type="number" id="height" placeholder="Example: 165" min="1">
+        </div>
+
+        <div class="input-group">
+          <label for="weight">Weight in kilograms</label>
+          <input type="number" id="weight" placeholder="Example: 55" min="1">
+        </div>
+
+        <button class="small-btn" onclick="calculateBMI()">Check BMI</button>
+
+        <div id="bmiResult"></div>
+      </div>
+    </section>
+
+    <section id="videos">
+      <div class="title">
+        <h2>Watch Workout Videos</h2>
+        <p>Click an exercise button to play the video.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="workout-img">Upper Body Video</div>
+          <span class="pill">Upper Body</span>
+          <h3>Upper Body Workout</h3>
+          <p>Exercises for chest, shoulders, and arms.</p>
+
+          <div class="exercise-list">
+            <button onclick="playVideo('Push Up','push up.mp4')">Push Up</button>
+            <button onclick="playVideo('Diamond Push Up','diamond push up.mp4')">Diamond Push Up</button>
+            <button onclick="playVideo('Chair Dips','chair dips.mp4')">Chair Dips</button>
+            <button onclick="playVideo('Arm Circles','arm circles.mp4')">Arm Circles</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="workout-img">Core Video</div>
+          <span class="pill">Core</span>
+          <h3>Core Workout</h3>
+          <p>Exercises for abs and body stability.</p>
+
+          <div class="exercise-list">
+            <button onclick="playVideo('Core','core.mp4')">Core</button>
+            <button onclick="playVideo('Plank','plank.mp4')">Plank</button>
+            <button onclick="playVideo('Jumping Jacks','jumping jacks.mp4')">Jumping Jacks</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="workout-img">Lower Body Video</div>
+          <span class="pill">Lower Body</span>
+          <h3>Lower Body Workout</h3>
+          <p>Exercises for legs and glutes.</p>
+
+          <div class="exercise-list">
+            <button onclick="playVideo('Squat','squat.mp4')">Squat</button>
+            <button onclick="playVideo('Calf Raises','calf raises.mp4')">Calf Raises</button>
+            <button onclick="playVideo('Donkey Kicks','donkey kicks.mp4')">Donkey Kicks</button>
+            <button onclick="playVideo('Glute Bridge','glute bridge.mp4')">Glute Bridge</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="food">
+      <div class="title">
+        <h2>Budget-Friendly Food Guide</h2>
+        <p>Simple food choices for gaining muscle, losing weight, and maintaining weight.</p>
+      </div>
+
+      <div class="table-wrap">
+        <div class="table-scroll">
+          <table class="food-table">
+            <thead>
+              <tr>
+                <th>Goal</th>
+                <th>Budget-Friendly Foods</th>
+                <th>Simple Meal Ideas</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td><strong>Gain Muscle</strong></td>
+                <td>Eggs, chicken breast, tuna, tofu, rice, peanut butter, milk, banana, monggo, sweet potato</td>
+                <td>Rice with egg and tuna, chicken with rice, peanut butter banana sandwich, tofu with vegetables</td>
+              </tr>
+
+              <tr>
+                <td><strong>Lose Weight</strong></td>
+                <td>Eggs, fish, chicken breast, vegetables, banana, oats, sweet potato, cucumber, cabbage, water</td>
+                <td>Boiled egg with vegetables, grilled fish with rice, oats with banana, chicken with cabbage</td>
+              </tr>
+
+              <tr>
+                <td><strong>Maintain Weight</strong></td>
+                <td>Rice, eggs, chicken, fish, vegetables, fruits, oats, bread, milk, tofu</td>
+                <td>Balanced rice meal with protein and vegetables, oats with milk, fish with rice and fruit</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </section>
 
     <section id="motivation">
-      <div class="title"><h2>Daily Motivation</h2><p>Small progress is still progress.</p></div>
+      <div class="title">
+        <h2>Daily Motivation</h2>
+        <p>Small progress is still progress.</p>
+      </div>
+
       <div class="motivation-card">
         <h3>Discipline is stronger than motivation.</h3>
         <p>Even a 10-minute workout can help build a healthy routine when you do it consistently.</p>
       </div>
     </section>
 
-    <section id="bmi">
-      <div class="title"><h2>BMI Calculator</h2><p>Check your body mass index and get a suggested workout goal.</p></div>
-      <div class="bmi-box">
-        <div class="input-group">
-          <label for="height">Height in centimeters</label>
-          <input type="number" id="height" placeholder="Example: 165" min="1">
-        </div>
-        <div class="input-group">
-          <label for="weight">Weight in kilograms</label>
-          <input type="number" id="weight" placeholder="Example: 55" min="1">
-        </div>
-        <button class="small-btn" onclick="calculateBMI()">Calculate BMI</button>
-        <div id="bmiResult"></div>
-      </div>
-    </section>
     <footer>© 2026 HomeBuddy. All Rights Reserved.</footer>
   </div>
 
+  <!-- MEN / WOMEN PAGE -->
   <div id="genderPage" class="page">
     <header>
       <div class="brand">
         <div class="logo-circle">HOME<br>BUDDY</div>
         <h1>HomeBuddy</h1>
       </div>
+
       <nav>
         <a href="#genderQuick">Quick Workouts</a>
-        <a href="#genderPlans">Plans</a>
-        <a href="#genderWorkouts">Videos</a>
-        <a href="#genderRoutine">Food & Goal</a>
+        <a href="#goalButtons">Goals</a>
       </nav>
+
       <button class="small-btn" onclick="goHome()">← Back Home</button>
     </header>
 
-    <section id="genderRoutine">
-      <div class="title">
-        <h2 id="genderTitle">Workout Routine</h2>
-        <p>Choose your goal: lose weight, maintain weight, or gain weight.</p>
-      </div>
-      <div class="routine-grid" id="routineGrid"></div>
-    </section>
-
+    <!-- QUICK WORKOUTS IS NOW ON TOP -->
     <section id="genderQuick">
-      <div class="title"><h2>Quick Workouts</h2><p>Short 10-minute workouts for busy students.</p></div>
+      <div class="title">
+        <h2>Quick Workouts</h2>
+        <p>Start with short 10-minute workouts before choosing your full routine.</p>
+      </div>
+
       <div class="cards" id="genderQuickGrid"></div>
     </section>
 
-    <section id="genderPlans">
-      <div class="title"><h2>Workout Plans</h2><p>View a 7-day routine with videos for each day.</p></div>
-      <div class="cards" id="genderPlanGrid"></div>
-    </section>
+    <section id="goalButtons">
+      <div class="title">
+        <h2 id="genderTitle">Workout Goals</h2>
+        <p>Choose your fitness goal to see 7-day beginner, intermediate, and advanced routines.</p>
+      </div>
 
-    <section id="genderWorkouts">
-      <div class="title"><h2>Watch Workout Videos</h2><p>Click an exercise button to play the video.</p></div>
-      <div class="cards" id="genderWorkoutGrid"></div>
+      <div class="routine-grid">
+        <div class="card">
+          <span class="pill">🔥 Goal</span>
+          <h3>Lose Weight Routine</h3>
+          <p>Click to view 7 days lose weight routine for beginner, intermediate, and advanced.</p>
+          <button class="small-btn" onclick="openGoalPage('lose')">Open Routine</button>
+        </div>
+
+        <div class="card">
+          <span class="pill">⚖️ Goal</span>
+          <h3>Maintain Weight Routine</h3>
+          <p>Click to view 7 days maintain weight routine for beginner, intermediate, and advanced.</p>
+          <button class="small-btn" onclick="openGoalPage('maintain')">Open Routine</button>
+        </div>
+
+        <div class="card">
+          <span class="pill">💪 Goal</span>
+          <h3>Gain Weight Routine</h3>
+          <p>Click to view 7 days gain weight routine for beginner, intermediate, and advanced.</p>
+          <button class="small-btn" onclick="openGoalPage('gain')">Open Routine</button>
+        </div>
+      </div>
     </section>
   </div>
 
+  <!-- GOAL ROUTINE PAGE -->
+  <div id="goalPage" class="page">
+    <header>
+      <div class="brand">
+        <div class="logo-circle">HOME<br>BUDDY</div>
+        <h1>HomeBuddy</h1>
+      </div>
+
+      <nav>
+        <a href="#goalRoutineSection">7-Day Routines</a>
+      </nav>
+
+      <button class="small-btn" onclick="backToGenderPage()">← Back</button>
+    </header>
+
+    <section id="goalRoutineSection">
+      <div class="title">
+        <h2 id="goalPageTitle">7 Days Routine</h2>
+        <p>Choose your level and view the complete 7-day workout routine with videos.</p>
+      </div>
+
+      <div class="cards" id="goalLevelGrid"></div>
+    </section>
+  </div>
+
+  <!-- VIDEO MODAL -->
   <div id="videoModal" class="modal" onclick="closeOnOutside(event,'videoModal')">
     <div class="modal-content">
       <h2 id="videoTitle">Workout Video</h2>
@@ -312,6 +908,7 @@
     </div>
   </div>
 
+  <!-- PLAN MODAL -->
   <div id="planModal" class="modal" onclick="closeOnOutside(event,'planModal')">
     <div class="modal-content">
       <h2 id="planTitle">7 Days Workout Plan</h2>
@@ -322,93 +919,169 @@
 
   <script>
     let lastGender = 'men';
+    let selectedGoal = 'lose';
 
-    const routines = {
-      men: {
-        title: 'Men Workout Routine',
-        lose: ['Jumping Jacks - 3 sets', 'Push Up - 3 sets', 'Squat - 3 sets', 'Plank - 30 seconds', 'Mountain Climbers - 3 sets'],
-        maintain: ['Push Up - 3 sets', 'Chair Dips - 3 sets', 'Squat - 3 sets', 'Plank - 45 seconds', 'Arm Circles - 3 sets'],
-        gain: ['Slow Push Up - 4 sets', 'Diamond Push Up - 3 sets', 'Chair Dips - 4 sets', 'Squat - 4 sets', 'Glute Bridge - 3 sets']
-      },
-      women: {
-        title: 'Women Workout Routine',
-        lose: ['Jumping Jacks - 3 sets', 'Squat - 3 sets', 'Donkey Kicks - 3 sets', 'Plank - 30 seconds', 'High Knees - 3 sets'],
-        maintain: ['Squat - 3 sets', 'Glute Bridge - 3 sets', 'Arm Circles - 3 sets', 'Plank - 40 seconds', 'Calf Raises - 3 sets'],
-        gain: ['Glute Bridge - 4 sets', 'Squat - 4 sets', 'Donkey Kicks - 4 sets', 'Calf Raises - 3 sets', 'Wall Sit - 3 sets']
-      }
-    };
-
-    const foods = {
-      lose: ['Boiled egg with banana', 'Tuna with rice and vegetables', 'Oatmeal with fruit', 'Chicken breast with vegetables', 'Mongo soup with rice'],
-      maintain: ['Egg with rice', 'Chicken adobo with rice', 'Vegetable soup', 'Peanut butter sandwich', 'Fish with rice and vegetables'],
-      gain: ['Rice with egg and banana', 'Peanut butter sandwich', 'Tuna with rice', 'Milk with oats', 'Chicken with sweet potato']
+    const goalNames = {
+      lose: 'Lose Weight',
+      maintain: 'Maintain Weight',
+      gain: 'Gain Weight'
     };
 
     const workoutPlans = {
-      beginner: {
-        title: '7 Days Beginner Workout Plan',
-        days: [
-          ['Day 1', 'Push Up, Squat, Plank', 'highlight.mp4'],
-          ['Day 2', 'Jumping Jacks, Arm Circles, Calf Raises', 'highlight.mp4'],
-          ['Day 3', 'Chair Dips, Squat, Glute Bridge', 'highlight.mp4'],
-          ['Day 4', 'Rest Day Stretching', 'highlight.mp4'],
-          ['Day 5', 'Push Up, Donkey Kicks, Plank', 'highlight.mp4'],
-          ['Day 6', 'Full Body Light Workout', 'highlight.mp4'],
-          ['Day 7', 'Recovery and Stretching', 'highlight.mp4']
-        ]
+      lose: {
+        beginner: {
+          title: '7 Days Lose Weight Routine - Beginner',
+          days: [
+            ['Day 1', 'Jumping Jacks, Squat, Plank', 'jumping jacks.mp4'],
+            ['Day 2', 'Push Up, Arm Circles, Calf Raises', 'push up.mp4'],
+            ['Day 3', 'Squat, Donkey Kicks, Glute Bridge', 'squat.mp4'],
+            ['Day 4', 'Light Stretching and Walking', 'highlight.mp4'],
+            ['Day 5', 'Jumping Jacks, Plank, Squat', 'plank.mp4'],
+            ['Day 6', 'Full Body Light Workout', 'core.mp4'],
+            ['Day 7', 'Recovery Stretching', 'highlight.mp4']
+          ]
+        },
+
+        intermediate: {
+          title: '7 Days Lose Weight Routine - Intermediate',
+          days: [
+            ['Day 1', 'Jumping Jacks, Push Up, Squat', 'jumping jacks.mp4'],
+            ['Day 2', 'Plank, Core, Calf Raises', 'core.mp4'],
+            ['Day 3', 'Chair Dips, Squat, Donkey Kicks', 'chair dips.mp4'],
+            ['Day 4', 'Cardio and Core Workout', 'plank.mp4'],
+            ['Day 5', 'Upper Body and Lower Body Mix', 'push up.mp4'],
+            ['Day 6', 'Full Body Moderate Workout', 'squat.mp4'],
+            ['Day 7', 'Stretching and Recovery', 'highlight.mp4']
+          ]
+        },
+
+        advanced: {
+          title: '7 Days Lose Weight Routine - Advanced',
+          days: [
+            ['Day 1', 'Diamond Push Up, Jumping Jacks, Plank', 'diamond push up.mp4'],
+            ['Day 2', 'Squat, Calf Raises, Core', 'squat.mp4'],
+            ['Day 3', 'Push Up, Donkey Kicks, Glute Bridge', 'push up.mp4'],
+            ['Day 4', 'Intense Core and Cardio', 'core.mp4'],
+            ['Day 5', 'Upper Body Strength and Cardio', 'chair dips.mp4'],
+            ['Day 6', 'Full Body Advanced Workout', 'jumping jacks.mp4'],
+            ['Day 7', 'Active Recovery and Stretching', 'highlight.mp4']
+          ]
+        }
       },
-      intermediate: {
-        title: '7 Days Intermediate Workout Plan',
-        days: [
-          ['Day 1', 'Push Up, Diamond Push Up, Squat', 'highlight.mp4'],
-          ['Day 2', 'Plank, Jumping Jacks, Calf Raises', 'highlight.mp4'],
-          ['Day 3', 'Chair Dips, Glute Bridge, Donkey Kicks', 'highlight.mp4'],
-          ['Day 4', 'Core and Cardio Workout', 'highlight.mp4'],
-          ['Day 5', 'Upper Body and Lower Body Mix', 'highlight.mp4'],
-          ['Day 6', 'Full Body Moderate Workout', 'highlight.mp4'],
-          ['Day 7', 'Stretching and Recovery', 'highlight.mp4']
-        ]
+
+      maintain: {
+        beginner: {
+          title: '7 Days Maintain Weight Routine - Beginner',
+          days: [
+            ['Day 1', 'Push Up, Squat, Plank', 'push up.mp4'],
+            ['Day 2', 'Arm Circles, Calf Raises, Glute Bridge', 'arm circles.mp4'],
+            ['Day 3', 'Squat, Plank, Donkey Kicks', 'squat.mp4'],
+            ['Day 4', 'Rest Day Stretching', 'highlight.mp4'],
+            ['Day 5', 'Push Up, Chair Dips, Calf Raises', 'chair dips.mp4'],
+            ['Day 6', 'Full Body Light Workout', 'core.mp4'],
+            ['Day 7', 'Recovery and Stretching', 'highlight.mp4']
+          ]
+        },
+
+        intermediate: {
+          title: '7 Days Maintain Weight Routine - Intermediate',
+          days: [
+            ['Day 1', 'Push Up, Squat, Plank', 'push up.mp4'],
+            ['Day 2', 'Chair Dips, Arm Circles, Core', 'chair dips.mp4'],
+            ['Day 3', 'Glute Bridge, Donkey Kicks, Calf Raises', 'glute bridge.mp4'],
+            ['Day 4', 'Core and Balance Workout', 'core.mp4'],
+            ['Day 5', 'Upper and Lower Body Mix', 'squat.mp4'],
+            ['Day 6', 'Full Body Moderate Workout', 'jumping jacks.mp4'],
+            ['Day 7', 'Stretching and Recovery', 'highlight.mp4']
+          ]
+        },
+
+        advanced: {
+          title: '7 Days Maintain Weight Routine - Advanced',
+          days: [
+            ['Day 1', 'Diamond Push Up, Chair Dips, Plank', 'diamond push up.mp4'],
+            ['Day 2', 'Squat, Calf Raises, Jumping Jacks', 'squat.mp4'],
+            ['Day 3', 'Push Up, Core, Glute Bridge', 'core.mp4'],
+            ['Day 4', 'Strength and Balance Workout', 'plank.mp4'],
+            ['Day 5', 'Upper Body Advanced Workout', 'chair dips.mp4'],
+            ['Day 6', 'Full Body Advanced Workout', 'jumping jacks.mp4'],
+            ['Day 7', 'Active Recovery and Stretching', 'highlight.mp4']
+          ]
+        }
       },
-      advanced: {
-        title: '7 Days Advanced Workout Plan',
-        days: [
-          ['Day 1', 'Diamond Push Up, Chair Dips, Plank', 'highlight.mp4'],
-          ['Day 2', 'Jumping Jacks, Squat, Calf Raises', 'highlight.mp4'],
-          ['Day 3', 'Push Up, Donkey Kicks, Glute Bridge', 'highlight.mp4'],
-          ['Day 4', 'Intense Core Workout', 'highlight.mp4'],
-          ['Day 5', 'Upper Body Strength Workout', 'highlight.mp4'],
-          ['Day 6', 'Full Body Advanced Workout','highlight.mp4'],
-          ['Day 7', 'Active Recovery and Stretching','highlight.mp4']
-        ]
+
+      gain: {
+        beginner: {
+          title: '7 Days Gain Weight Routine - Beginner',
+          days: [
+            ['Day 1', 'Slow Push Up, Squat, Glute Bridge', 'push up.mp4'],
+            ['Day 2', 'Chair Dips, Arm Circles, Calf Raises', 'chair dips.mp4'],
+            ['Day 3', 'Squat, Donkey Kicks, Glute Bridge', 'glute bridge.mp4'],
+            ['Day 4', 'Rest Day Stretching', 'highlight.mp4'],
+            ['Day 5', 'Push Up, Squat, Plank', 'plank.mp4'],
+            ['Day 6', 'Full Body Strength Workout', 'squat.mp4'],
+            ['Day 7', 'Recovery and Stretching', 'highlight.mp4']
+          ]
+        },
+
+        intermediate: {
+          title: '7 Days Gain Weight Routine - Intermediate',
+          days: [
+            ['Day 1', 'Push Up, Chair Dips, Squat', 'push up.mp4'],
+            ['Day 2', 'Glute Bridge, Donkey Kicks, Calf Raises', 'glute bridge.mp4'],
+            ['Day 3', 'Diamond Push Up, Plank, Squat', 'diamond push up.mp4'],
+            ['Day 4', 'Core Strength Workout', 'core.mp4'],
+            ['Day 5', 'Upper Body Strength Workout', 'chair dips.mp4'],
+            ['Day 6', 'Lower Body Strength Workout', 'squat.mp4'],
+            ['Day 7', 'Stretching and Recovery', 'highlight.mp4']
+          ]
+        },
+
+        advanced: {
+          title: '7 Days Gain Weight Routine - Advanced',
+          days: [
+            ['Day 1', 'Diamond Push Up, Chair Dips, Plank', 'diamond push up.mp4'],
+            ['Day 2', 'Squat, Glute Bridge, Calf Raises', 'squat.mp4'],
+            ['Day 3', 'Push Up, Donkey Kicks, Core', 'push up.mp4'],
+            ['Day 4', 'Intense Strength Workout', 'core.mp4'],
+            ['Day 5', 'Upper Body Muscle Workout', 'chair dips.mp4'],
+            ['Day 6', 'Lower Body Muscle Workout', 'glute bridge.mp4'],
+            ['Day 7', 'Active Recovery and Stretching', 'highlight.mp4']
+          ]
+        }
       }
     };
 
-function playVideo(title, videoSrc){
-  document.getElementById('videoTitle').textContent = title;
+    function playVideo(title, videoSrc){
+      document.getElementById('videoTitle').textContent = title;
 
-  document.getElementById('videoContainer').innerHTML = `
-    <video controls autoplay>
-      <source src="${videoSrc}" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  `;
+      document.getElementById('videoContainer').innerHTML = `
+        <video controls autoplay>
+          <source src="${videoSrc}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      `;
 
-  document.getElementById('videoModal').classList.add('active');
-}
+      document.getElementById('videoModal').classList.add('active');
+    }
 
-    function showPlan(level){
-      const plan = workoutPlans[level];
+    function showPlan(goal, level){
+      const plan = workoutPlans[goal][level];
+
       document.getElementById('planTitle').textContent = plan.title;
+
       document.getElementById('planList').innerHTML = plan.days.map(day => `
         <div class="day-card">
           <h3>${day[0]}</h3>
           <p>${day[1]}</p>
+
           <video controls preload="metadata">
             <source src="${day[2]}" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
       `).join('');
+
       document.getElementById('planModal').classList.add('active');
     }
 
@@ -420,177 +1093,134 @@ function playVideo(title, videoSrc){
     }
 
     function closeOnOutside(event, modalId){
-      if(event.target.id === modalId){ closeModal(); }
+      if(event.target.id === modalId){
+        closeModal();
+      }
     }
 
     function openGenderPage(gender){
       lastGender = gender;
+
       document.getElementById('mainPage').classList.remove('active');
+      document.getElementById('goalPage').classList.remove('active');
       document.getElementById('genderPage').classList.add('active');
-      document.getElementById('genderTitle').textContent = routines[gender].title;
 
-      const goals = [
-        ['lose', 'Lose Weight', '🔥'],
-        ['maintain', 'Maintain Weight', '⚖️'],
-        ['gain', 'Gain Weight', '💪']
-      ];
+      document.getElementById('genderTitle').textContent =
+        gender === 'men' ? 'Men Workout Goals' : 'Women Workout Goals';
 
-     document.getElementById('routineGrid').innerHTML = goals.map(([key,label,icon]) => `
-  <div class="card" id="goal-${key}">
-    <span class="pill">${icon} ${label}</span>
-    <h3>${label} Routine</h3>
-    <div class="video-box">
-      <video controls>
-        <source src="${key === 'lose' ? 'jumping jacks.mp4' : key === 'maintain' ? 'plank.mp4' : 'glute bridge.mp4'}" type="video/mp4">
-      </video>
-    </div>
-    <div class="food-list">
-      <strong>Workout Routine:</strong>
-      <ul>${routines[gender][key].map(item => `<li>${item}</li>`).join('')}</ul>
-      <strong>Budget-Friendly Food:</strong>
-      <ul>${foods[key].map(item => `<li>${item}</li>`).join('')}</ul>
-    </div>
-  </div>
-`).join('');
+      loadKeptSections();
+      window.scrollTo(0,0);
+    }
 
-document.getElementById('genderQuickGrid').innerHTML = `
-  <div class="card">
-    <span class="pill">10 Minutes</span>
-    <h3>Beginner Quick Workout</h3>
-    <p>Easy exercises for beginners.</p>
-    <div class="video-box">Beginner Video</div>
-    <button class="small-btn" onclick="playVideo('Beginner Quick Workout','push up.mp4')">Watch Video</button>
-  </div>
+    function openGoalPage(goal){
+      selectedGoal = goal;
 
-  <div class="card">
-    <span class="pill">10 Minutes</span>
-    <h3>Intermediate Quick Workout</h3>
-    <p>Short but effective workout routine.</p>
-    <div class="video-box">Intermediate Video</div>
-    <button class="small-btn" onclick="playVideo('Intermediate Quick Workout','squat.mp4')">Watch Video</button>
-  </div>
+      document.getElementById('mainPage').classList.remove('active');
+      document.getElementById('genderPage').classList.remove('active');
+      document.getElementById('goalPage').classList.add('active');
 
-  <div class="card">
-    <span class="pill">10 Minutes</span>
-    <h3>Advanced Quick Workout</h3>
-    <p>Fast and intense home workout.</p>
-    <div class="video-box">Advanced Video</div>
-    <button class="small-btn" onclick="playVideo('Advanced Quick Workout','diamond push up.mp4')">Watch Video</button>
-  </div>
-`;
+      const genderText = lastGender === 'men' ? 'Men' : 'Women';
 
-document.getElementById('genderPlanGrid').innerHTML = `
-  <div class="card">
-    <span class="pill">Beginner</span>
-    <h3>7 Days Beginner</h3>
-    <p>Perfect for students starting their fitness journey.</p>
-    <button class="small-btn" onclick="showPlan('beginner')">
-      View Plan
-    </button>
-  </div>
+      document.getElementById('goalPageTitle').textContent =
+        `${genderText} ${goalNames[goal]} Routine`;
 
-  <div class="card">
-    <span class="pill">Intermediate</span>
-    <h3>7 Days Intermediate</h3>
-    <p>Moderate intensity workout routine.</p>
-    <button class="small-btn" onclick="showPlan('intermediate')">
-      View Plan
-    </button>
-  </div>
+      document.getElementById('goalLevelGrid').innerHTML = `
+        <div class="card">
+          <span class="pill">Beginner</span>
+          <h3>7 Days ${goalNames[goal]} Beginner</h3>
+          <p>Easy routine for students who are just starting.</p>
+          <button class="small-btn" onclick="showPlan('${goal}','beginner')">View Plan</button>
+        </div>
 
-  <div class="card">
-    <span class="pill">Advanced</span>
-    <h3>7 Days Advanced</h3>
-    <p>Intense home workout for advanced users.</p>
-    <button class="small-btn" onclick="showPlan('advanced')">
-      View Plan
-    </button>
-  </div>
-`;
+        <div class="card">
+          <span class="pill">Intermediate</span>
+          <h3>7 Days ${goalNames[goal]} Intermediate</h3>
+          <p>Moderate routine for students with basic workout experience.</p>
+          <button class="small-btn" onclick="showPlan('${goal}','intermediate')">View Plan</button>
+        </div>
 
-document.getElementById('genderWorkoutGrid').innerHTML = `
-  <div class="card">
-    <div class="workout-img">Upper Body Video</div>
-
-    <span class="pill">Upper Body</span>
-    <h3>Upper Body Workout</h3>
-    <p>Exercises for chest, shoulders, and arms.</p>
-
-    <div class="exercise-list">
-      <button onclick="playVideo('Push Up','push up.mp4')">
-        Push Up
-      </button>
-
-      <button onclick="playVideo('Diamond Push Up','diamond push up.mp4')">
-        Diamond Push Up
-      </button>
-
-      <button onclick="playVideo('Chair Dips','chair dips.mp4')">
-        Chair Dips
-      </button>
-
-      <button onclick="playVideo('Arm Circles','arm circles.mp4')">
-        Arm Circles
-      </button>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="workout-img">Core Video</div>
-
-    <span class="pill">Core</span>
-    <h3>Core Workout</h3>
-    <p>Exercises for abs and body stability.</p>
-
-    <div class="exercise-list">
-      <button onclick="playVideo('Core','core.mp4')">
-        Core
-      </button>
-
-      <button onclick="playVideo('Plank','plank.mp4')">
-        Plank
-      </button>
-
-      <button onclick="playVideo('Jumping Jacks','jumping jacks.mp4')">
-        Jumping Jacks
-      </button>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="workout-img">Lower Body Video</div>
-
-    <span class="pill">Lower Body</span>
-    <h3>Lower Body Workout</h3>
-    <p>Exercises for legs and glutes.</p>
-
-    <div class="exercise-list">
-      <button onclick="playVideo('Squat','squat.mp4')">
-        Squat
-      </button>
-
-      <button onclick="playVideo('Calf Raises','calf raises.mp4')">
-        Calf Raises
-      </button>
-
-      <button onclick="playVideo('Donkey Kicks','donkey kicks.mp4')">
-        Donkey Kicks
-      </button>
-
-      <button onclick="playVideo('Glute Bridge','glute bridge.mp4')">
-        Glute Bridge
-      </button>
-    </div>
-  </div>
-`;
+        <div class="card">
+          <span class="pill">Advanced</span>
+          <h3>7 Days ${goalNames[goal]} Advanced</h3>
+          <p>Intense routine for students who want a harder challenge.</p>
+          <button class="small-btn" onclick="showPlan('${goal}','advanced')">View Plan</button>
+        </div>
+      `;
 
       window.scrollTo(0,0);
     }
 
+    function backToGenderPage(){
+      closeModal();
+
+      document.getElementById('goalPage').classList.remove('active');
+      document.getElementById('genderPage').classList.add('active');
+
+      window.scrollTo(0,0);
+    }
+
+    function loadKeptSections(){
+      document.getElementById('genderQuickGrid').innerHTML = `
+        <div class="card">
+          <span class="pill">10 Minutes</span>
+          <h3>Beginner Quick Workout</h3>
+          <p>Easy exercises for beginners.</p>
+
+          <div class="video-box">
+            <video controls>
+              <source src="push up.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <button class="small-btn" onclick="playVideo('Beginner Quick Workout','push up.mp4')">
+            Watch Video
+          </button>
+        </div>
+
+        <div class="card">
+          <span class="pill">10 Minutes</span>
+          <h3>Intermediate Quick Workout</h3>
+          <p>Short but effective workout routine.</p>
+
+          <div class="video-box">
+            <video controls>
+              <source src="squat.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <button class="small-btn" onclick="playVideo('Intermediate Quick Workout','squat.mp4')">
+            Watch Video
+          </button>
+        </div>
+
+        <div class="card">
+          <span class="pill">10 Minutes</span>
+          <h3>Advanced Quick Workout</h3>
+          <p>Fast and intense home workout.</p>
+
+          <div class="video-box">
+            <video controls>
+              <source src="diamond push up.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <button class="small-btn" onclick="playVideo('Advanced Quick Workout','diamond push up.mp4')">
+            Watch Video
+          </button>
+        </div>
+      `;
+    }
+
     function goHome(){
       closeModal();
+
       document.getElementById('genderPage').classList.remove('active');
+      document.getElementById('goalPage').classList.remove('active');
       document.getElementById('mainPage').classList.add('active');
+
       window.scrollTo(0,0);
     }
 
@@ -598,6 +1228,7 @@ document.getElementById('genderWorkoutGrid').innerHTML = `
       const height = Number(document.getElementById('height').value) / 100;
       const weight = Number(document.getElementById('weight').value);
       const result = document.getElementById('bmiResult');
+
       result.classList.add('show');
 
       if(!height || !weight || height <= 0 || weight <= 0){
@@ -606,21 +1237,22 @@ document.getElementById('genderWorkoutGrid').innerHTML = `
       }
 
       const bmi = weight / (height * height);
+
       let status = '';
       let suggestion = '';
       let goal = '';
 
       if(bmi < 18.5){
         status = 'Below Average / Underweight';
-        suggestion = 'Suggested routine: Pick the Gain Weight workout routine.';
+        suggestion = 'Suggested routine: Pick the Gain Weight Routine.';
         goal = 'gain';
       }else if(bmi < 25){
         status = 'Normal';
-        suggestion = 'Suggested routine: Pick the Maintain Weight workout routine.';
+        suggestion = 'Suggested routine: Pick the Maintain Weight Routine.';
         goal = 'maintain';
       }else{
         status = 'Above Average / Overweight';
-        suggestion = 'Suggested routine: Pick the Lose Weight workout routine.';
+        suggestion = 'Suggested routine: Pick the Lose Weight Routine.';
         goal = 'lose';
       }
 
@@ -628,12 +1260,17 @@ document.getElementById('genderWorkoutGrid').innerHTML = `
         <strong>Your BMI: ${bmi.toFixed(1)}</strong><br>
         Status: ${status}<br>
         ${suggestion}<br>
-        <button class="small-btn suggestion-btn" onclick="openGenderPage(lastGender); setTimeout(() => document.getElementById('goal-${goal}').scrollIntoView({behavior:'smooth', block:'center'}), 80);">Open Suggested Routine</button>
+
+        <button class="small-btn" onclick="openGenderPage(lastGender); setTimeout(() => openGoalPage('${goal}'), 120);">
+          Open Suggested Routine
+        </button>
       `;
     }
 
     document.addEventListener('keydown', function(event){
-      if(event.key === 'Escape') closeModal();
+      if(event.key === 'Escape'){
+        closeModal();
+      }
     });
   </script>
 </body>

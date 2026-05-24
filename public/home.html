@@ -4,10 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HomeBuddy | Home Workout Website</title>
-
-  <!-- SUPABASE CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
   <style>
     :root{
       --bg:#151515;
@@ -52,11 +48,11 @@
       box-shadow:0 0 0 5px rgba(255,122,26,.08);
     }
     .logo-circle img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      border-radius:50%;
-    }
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+}
     .logo-circle{width:72px;height:72px;color:var(--orange);font-weight:900;font-size:12px;text-align:center;line-height:1.1;}
     .brand h1{color:var(--orange);font-size:30px;letter-spacing:.5px;}
 
@@ -86,52 +82,6 @@
     .btn:hover,.logout:hover,.small-btn:hover{transform:translateY(-2px);filter:brightness(1.07);}
     .small-btn{padding:12px 24px;margin:8px;}
     .close-btn{background:#444;box-shadow:none;}
-
-    /* PROGRESS BAR */
-    .progress-box{
-      background:#181818;
-      border:1px solid var(--line);
-      padding:10px 14px;
-      border-radius:18px;
-      min-width:220px;
-    }
-
-    .progress-text{
-      font-size:13px;
-      font-weight:800;
-      color:#ffd3b4;
-      margin-bottom:6px;
-    }
-
-    .progress-bar{
-      width:100%;
-      height:9px;
-      background:#333;
-      border-radius:999px;
-      overflow:hidden;
-    }
-
-    .progress-fill{
-      width:0%;
-      height:100%;
-      background:linear-gradient(135deg,var(--orange),var(--orange2));
-      transition:.3s;
-    }
-
-    .notification{
-      position:fixed;
-      top:110px;
-      right:25px;
-      background:#222;
-      border:1px solid var(--orange);
-      color:white;
-      padding:16px 22px;
-      border-radius:18px;
-      z-index:2000;
-      display:none;
-      box-shadow:var(--shadow);
-      font-weight:800;
-    }
 
     section{padding:78px 7%;}
     .page{display:none;min-height:100vh;}
@@ -178,7 +128,8 @@
       inset:-80px;
       background:radial-gradient(circle,rgba(255,122,26,.20),transparent 60%);
     }
-    .hero-video video{position:relative;width:100%;height:100%;object-fit:cover;border-radius:14px;}
+    .video-placeholder{position:relative;width:88%;min-height:300px;border:3px dashed #666;border-radius:24px;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;color:#ddd;font-size:24px;text-align:center;padding:25px;}
+    .play-icon{width:74px;height:74px;border-radius:50%;background:var(--orange);display:grid;place-items:center;font-size:34px;box-shadow:0 0 30px rgba(255,122,26,.50);}
 
     .title{text-align:center;margin-bottom:42px;}
     .title h2{font-size:clamp(34px,4vw,52px);color:var(--orange);margin-bottom:12px;}
@@ -196,7 +147,7 @@
     .card p{font-size:18px;line-height:1.55;margin-bottom:22px;color:#e8e8e8;}
 
     .workout-img,.video-box{height:165px;background:#171717;border-radius:18px;border:2px dashed #555;margin-bottom:22px;display:flex;align-items:center;justify-content:center;color:#aaa;overflow:hidden;padding:15px;}
-    .workout-img video,.video-box video{width:100%;height:100%;object-fit:cover;border-radius:14px;}
+    .workout-img video,.video-box video,.hero-video video{width:100%;height:100%;object-fit:cover;border-radius:14px;}
     .exercise-list button{display:block;width:90%;margin:10px auto;background:#333;border:1px solid rgba(255,255,255,.10);color:white;padding:13px 18px;border-radius:20px;font-weight:800;cursor:pointer;transition:.22s;}
     .exercise-list button:hover{background:var(--orange);transform:translateX(3px);}
 
@@ -233,7 +184,6 @@
       .hero{min-height:auto;padding-top:55px;}
       .hero-video{min-height:300px;}
       .modal-video{height:270px;}
-      .progress-box{min-width:260px;}
     }
 
     @media(max-width:560px){
@@ -244,7 +194,6 @@
       nav a{font-size:14px;}
       .card,.bmi-box,.motivation-card{padding:26px 18px;}
       .hero p,.title p{font-size:17px;}
-      .notification{right:12px;left:12px;text-align:center;}
     }
   </style>
 </head>
@@ -252,9 +201,9 @@
   <div id="mainPage" class="page active">
     <header>
       <div class="brand">
-        <div class="logo-circle">
-          <img src="1.jpg" alt="HomeBuddy Logo">
-        </div>
+       <div class="logo-circle">
+  <img src="1.jpg" alt="HomeBuddy Logo">
+</div>
         <h1>HomeBuddy</h1>
       </div>
       <nav>
@@ -263,16 +212,11 @@
         <a href="#motivation">Motivation</a>
       </nav>
       <div class="right-nav">
-        <div class="progress-box">
-          <div class="progress-text" id="progressText">Today: 0%</div>
-          <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-          </div>
-        </div>
-
         <div class="gender-logo" onclick="openGenderPage('men')" title="Men Workout">🏋️‍♂️</div>
         <div class="gender-logo" onclick="openGenderPage('women')" title="Women Workout">🏋️‍♀️</div>
-        <button class="logout" onclick="logoutUser()">Logout</button>
+ <button class="logout" onclick="window.location.href='index.html'">
+  Logout
+</button>
       </div>
     </header>
 
@@ -287,12 +231,12 @@
           <button class="small-btn outline-btn" onclick="openGenderPage('women')">Women Workouts</button>
         </div>
       </div>
-      <div class="hero-video">
-        <video controls autoplay muted loop>
-          <source src="highlight.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
+     <div class="hero-video">
+  <video controls autoplay muted loop>
+    <source src="highlight.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
     </section>
 
     <section id="motivation">
@@ -333,15 +277,7 @@
         <a href="#genderWorkouts">Videos</a>
         <a href="#genderRoutine">Food & Goal</a>
       </nav>
-      <div class="right-nav">
-        <div class="progress-box">
-          <div class="progress-text" id="genderProgressText">Today: 0%</div>
-          <div class="progress-bar">
-            <div class="progress-fill" id="genderProgressFill"></div>
-          </div>
-        </div>
-        <button class="small-btn" onclick="goHome()">← Back Home</button>
-      </div>
+      <button class="small-btn" onclick="goHome()">← Back Home</button>
     </header>
 
     <section id="genderRoutine">
@@ -384,69 +320,321 @@
     </div>
   </div>
 
-  <div class="notification" id="taskNotification">
-    🎉 You completed today’s task!
+  <script>
+    let lastGender = 'men';
+
+    const routines = {
+      men: {
+        title: 'Men Workout Routine',
+        lose: ['Jumping Jacks - 3 sets', 'Push Up - 3 sets', 'Squat - 3 sets', 'Plank - 30 seconds', 'Mountain Climbers - 3 sets'],
+        maintain: ['Push Up - 3 sets', 'Chair Dips - 3 sets', 'Squat - 3 sets', 'Plank - 45 seconds', 'Arm Circles - 3 sets'],
+        gain: ['Slow Push Up - 4 sets', 'Diamond Push Up - 3 sets', 'Chair Dips - 4 sets', 'Squat - 4 sets', 'Glute Bridge - 3 sets']
+      },
+      women: {
+        title: 'Women Workout Routine',
+        lose: ['Jumping Jacks - 3 sets', 'Squat - 3 sets', 'Donkey Kicks - 3 sets', 'Plank - 30 seconds', 'High Knees - 3 sets'],
+        maintain: ['Squat - 3 sets', 'Glute Bridge - 3 sets', 'Arm Circles - 3 sets', 'Plank - 40 seconds', 'Calf Raises - 3 sets'],
+        gain: ['Glute Bridge - 4 sets', 'Squat - 4 sets', 'Donkey Kicks - 4 sets', 'Calf Raises - 3 sets', 'Wall Sit - 3 sets']
+      }
+    };
+
+    const foods = {
+      lose: ['Boiled egg with banana', 'Tuna with rice and vegetables', 'Oatmeal with fruit', 'Chicken breast with vegetables', 'Mongo soup with rice'],
+      maintain: ['Egg with rice', 'Chicken adobo with rice', 'Vegetable soup', 'Peanut butter sandwich', 'Fish with rice and vegetables'],
+      gain: ['Rice with egg and banana', 'Peanut butter sandwich', 'Tuna with rice', 'Milk with oats', 'Chicken with sweet potato']
+    };
+
+    const workoutPlans = {
+      beginner: {
+        title: '7 Days Beginner Workout Plan',
+        days: [
+          ['Day 1', 'Push Up, Squat, Plank', 'highlight.mp4'],
+          ['Day 2', 'Jumping Jacks, Arm Circles, Calf Raises', 'highlight.mp4'],
+          ['Day 3', 'Chair Dips, Squat, Glute Bridge', 'highlight.mp4'],
+          ['Day 4', 'Rest Day Stretching', 'highlight.mp4'],
+          ['Day 5', 'Push Up, Donkey Kicks, Plank', 'highlight.mp4'],
+          ['Day 6', 'Full Body Light Workout', 'highlight.mp4'],
+          ['Day 7', 'Recovery and Stretching', 'highlight.mp4']
+        ]
+      },
+      intermediate: {
+        title: '7 Days Intermediate Workout Plan',
+        days: [
+          ['Day 1', 'Push Up, Diamond Push Up, Squat', 'highlight.mp4'],
+          ['Day 2', 'Plank, Jumping Jacks, Calf Raises', 'highlight.mp4'],
+          ['Day 3', 'Chair Dips, Glute Bridge, Donkey Kicks', 'highlight.mp4'],
+          ['Day 4', 'Core and Cardio Workout', 'highlight.mp4'],
+          ['Day 5', 'Upper Body and Lower Body Mix', 'highlight.mp4'],
+          ['Day 6', 'Full Body Moderate Workout', 'highlight.mp4'],
+          ['Day 7', 'Stretching and Recovery', 'highlight.mp4']
+        ]
+      },
+      advanced: {
+        title: '7 Days Advanced Workout Plan',
+        days: [
+          ['Day 1', 'Diamond Push Up, Chair Dips, Plank', 'highlight.mp4'],
+          ['Day 2', 'Jumping Jacks, Squat, Calf Raises', 'highlight.mp4'],
+          ['Day 3', 'Push Up, Donkey Kicks, Glute Bridge', 'highlight.mp4'],
+          ['Day 4', 'Intense Core Workout', 'highlight.mp4'],
+          ['Day 5', 'Upper Body Strength Workout', 'highlight.mp4'],
+          ['Day 6', 'Full Body Advanced Workout','highlight.mp4'],
+          ['Day 7', 'Active Recovery and Stretching','highlight.mp4']
+        ]
+      }
+    };
+
+function playVideo(title, videoSrc){
+  document.getElementById('videoTitle').textContent = title;
+
+  document.getElementById('videoContainer').innerHTML = `
+    <video controls autoplay>
+      <source src="${videoSrc}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  `;
+
+  document.getElementById('videoModal').classList.add('active');
+}
+
+    function showPlan(level){
+      const plan = workoutPlans[level];
+      document.getElementById('planTitle').textContent = plan.title;
+      document.getElementById('planList').innerHTML = plan.days.map(day => `
+        <div class="day-card">
+          <h3>${day[0]}</h3>
+          <p>${day[1]}</p>
+          <video controls preload="metadata">
+            <source src="${day[2]}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      `).join('');
+      document.getElementById('planModal').classList.add('active');
+    }
+
+    function closeModal(){
+      document.getElementById('videoModal').classList.remove('active');
+      document.getElementById('planModal').classList.remove('active');
+      document.getElementById('videoContainer').innerHTML = '';
+      document.getElementById('planList').innerHTML = '';
+    }
+
+    function closeOnOutside(event, modalId){
+      if(event.target.id === modalId){ closeModal(); }
+    }
+
+    function openGenderPage(gender){
+      lastGender = gender;
+      document.getElementById('mainPage').classList.remove('active');
+      document.getElementById('genderPage').classList.add('active');
+      document.getElementById('genderTitle').textContent = routines[gender].title;
+
+      const goals = [
+        ['lose', 'Lose Weight', '🔥'],
+        ['maintain', 'Maintain Weight', '⚖️'],
+        ['gain', 'Gain Weight', '💪']
+      ];
+
+     document.getElementById('routineGrid').innerHTML = goals.map(([key,label,icon]) => `
+  <div class="card" id="goal-${key}">
+    <span class="pill">${icon} ${label}</span>
+    <h3>${label} Routine</h3>
+    <div class="video-box">
+      <video controls>
+        <source src="${key === 'lose' ? 'jumping jacks.mp4' : key === 'maintain' ? 'plank.mp4' : 'glute bridge.mp4'}" type="video/mp4">
+      </video>
+    </div>
+    <div class="food-list">
+      <strong>Workout Routine:</strong>
+      <ul>${routines[gender][key].map(item => `<li>${item}</li>`).join('')}</ul>
+      <strong>Budget-Friendly Food:</strong>
+      <ul>${foods[key].map(item => `<li>${item}</li>`).join('')}</ul>
+    </div>
+  </div>
+`).join('');
+
+document.getElementById('genderQuickGrid').innerHTML = `
+  <div class="card">
+    <span class="pill">10 Minutes</span>
+    <h3>Beginner Quick Workout</h3>
+    <p>Easy exercises for beginners.</p>
+    <div class="video-box">Beginner Video</div>
+    <button class="small-btn" onclick="playVideo('Beginner Quick Workout','push up.mp4')">Watch Video</button>
   </div>
 
-  <script>
-    /* =====================================================
-       SUPABASE SETUP
-       Replace these two values with your own Supabase project values.
-       Get them from: Supabase Dashboard > Project Settings > API
-    ===================================================== */
-    const SUPABASE_URL = "YOUR_SUPABASE_URL_HERE";
-    const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY_HERE";
-    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  <div class="card">
+    <span class="pill">10 Minutes</span>
+    <h3>Intermediate Quick Workout</h3>
+    <p>Short but effective workout routine.</p>
+    <div class="video-box">Intermediate Video</div>
+    <button class="small-btn" onclick="playVideo('Intermediate Quick Workout','squat.mp4')">Watch Video</button>
+  </div>
 
-    let currentUser = null;
-    let completedCount = 0;
-    const totalTasks = 3; // User must finish 3 videos to complete today's task.
-    let hasShownCompletedNotification = false;
+  <div class="card">
+    <span class="pill">10 Minutes</span>
+    <h3>Advanced Quick Workout</h3>
+    <p>Fast and intense home workout.</p>
+    <div class="video-box">Advanced Video</div>
+    <button class="small-btn" onclick="playVideo('Advanced Quick Workout','diamond push up.mp4')">Watch Video</button>
+  </div>
+`;
 
-    async function loadUserProgress(){
-      const { data: userData, error: userError } = await supabaseClient.auth.getUser();
+document.getElementById('genderPlanGrid').innerHTML = `
+  <div class="card">
+    <span class="pill">Beginner</span>
+    <h3>7 Days Beginner</h3>
+    <p>Perfect for students starting their fitness journey.</p>
+    <button class="small-btn" onclick="showPlan('beginner')">
+      View Plan
+    </button>
+  </div>
 
-      if(userError || !userData.user){
-        alert("Please login first.");
-        window.location.href = "index.html";
+  <div class="card">
+    <span class="pill">Intermediate</span>
+    <h3>7 Days Intermediate</h3>
+    <p>Moderate intensity workout routine.</p>
+    <button class="small-btn" onclick="showPlan('intermediate')">
+      View Plan
+    </button>
+  </div>
+
+  <div class="card">
+    <span class="pill">Advanced</span>
+    <h3>7 Days Advanced</h3>
+    <p>Intense home workout for advanced users.</p>
+    <button class="small-btn" onclick="showPlan('advanced')">
+      View Plan
+    </button>
+  </div>
+`;
+
+document.getElementById('genderWorkoutGrid').innerHTML = `
+  <div class="card">
+    <div class="workout-img">Upper Body Video</div>
+
+    <span class="pill">Upper Body</span>
+    <h3>Upper Body Workout</h3>
+    <p>Exercises for chest, shoulders, and arms.</p>
+
+    <div class="exercise-list">
+      <button onclick="playVideo('Push Up','push up.mp4')">
+        Push Up
+      </button>
+
+      <button onclick="playVideo('Diamond Push Up','diamond push up.mp4')">
+        Diamond Push Up
+      </button>
+
+      <button onclick="playVideo('Chair Dips','chair dips.mp4')">
+        Chair Dips
+      </button>
+
+      <button onclick="playVideo('Arm Circles','arm circles.mp4')">
+        Arm Circles
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="workout-img">Core Video</div>
+
+    <span class="pill">Core</span>
+    <h3>Core Workout</h3>
+    <p>Exercises for abs and body stability.</p>
+
+    <div class="exercise-list">
+      <button onclick="playVideo('Core','core.mp4')">
+        Core
+      </button>
+
+      <button onclick="playVideo('Plank','plank.mp4')">
+        Plank
+      </button>
+
+      <button onclick="playVideo('Jumping Jacks','jumping jacks.mp4')">
+        Jumping Jacks
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="workout-img">Lower Body Video</div>
+
+    <span class="pill">Lower Body</span>
+    <h3>Lower Body Workout</h3>
+    <p>Exercises for legs and glutes.</p>
+
+    <div class="exercise-list">
+      <button onclick="playVideo('Squat','squat.mp4')">
+        Squat
+      </button>
+
+      <button onclick="playVideo('Calf Raises','calf raises.mp4')">
+        Calf Raises
+      </button>
+
+      <button onclick="playVideo('Donkey Kicks','donkey kicks.mp4')">
+        Donkey Kicks
+      </button>
+
+      <button onclick="playVideo('Glute Bridge','glute bridge.mp4')">
+        Glute Bridge
+      </button>
+    </div>
+  </div>
+`;
+
+      window.scrollTo(0,0);
+    }
+
+    function goHome(){
+      closeModal();
+      document.getElementById('genderPage').classList.remove('active');
+      document.getElementById('mainPage').classList.add('active');
+      window.scrollTo(0,0);
+    }
+
+    function calculateBMI(){
+      const height = Number(document.getElementById('height').value) / 100;
+      const weight = Number(document.getElementById('weight').value);
+      const result = document.getElementById('bmiResult');
+      result.classList.add('show');
+
+      if(!height || !weight || height <= 0 || weight <= 0){
+        result.innerHTML = 'Please enter a valid height and weight.';
         return;
       }
 
-      currentUser = userData.user;
-      const today = new Date().toISOString().split("T")[0];
+      const bmi = weight / (height * height);
+      let status = '';
+      let suggestion = '';
+      let goal = '';
 
-      const { data, error } = await supabaseClient
-        .from("user_progress")
-        .select("*")
-        .eq("user_id", currentUser.id)
-        .eq("progress_date", today)
-        .maybeSingle();
-
-      if(error){
-        console.log("Load progress error:", error.message);
-        return;
-      }
-
-      if(!data){
-        const { data: newProgress, error: insertError } = await supabaseClient
-          .from("user_progress")
-          .insert({
-            user_id: currentUser.id,
-            progress_date: today,
-            completed_count: 0,
-            total_tasks: totalTasks,
-            is_completed: false
-          })
-          .select()
-          .single();
-
-        if(insertError){
-          console.log("Insert progress error:", insertError.message);
-          return;
-        }
-
-        completedCount = newProgress.completed_count || 0;
+      if(bmi < 18.5){
+        status = 'Below Average / Underweight';
+        suggestion = 'Suggested routine: Pick the Gain Weight workout routine.';
+        goal = 'gain';
+      }else if(bmi < 25){
+        status = 'Normal';
+        suggestion = 'Suggested routine: Pick the Maintain Weight workout routine.';
+        goal = 'maintain';
       }else{
-        completedCount = data.completed_count || 0;
+        status = 'Above Average / Overweight';
+        suggestion = 'Suggested routine: Pick the Lose Weight workout routine.';
+        goal = 'lose';
       }
 
+      result.innerHTML = `
+        <strong>Your BMI: ${bmi.toFixed(1)}</strong><br>
+        Status: ${status}<br>
+        ${suggestion}<br>
+        <button class="small-btn suggestion-btn" onclick="openGenderPage(lastGender); setTimeout(() => document.getElementById('goal-${goal}').scrollIntoView({behavior:'smooth', block:'center'}), 80);">Open Suggested Routine</button>
+      `;
+    }
+
+    document.addEventListener('keydown', function(event){
+      if(event.key === 'Escape') closeModal();
+    });
+  </script>
+</body>
+</html>
